@@ -3,7 +3,7 @@
 A fan-casting site for romantasy readers. Every new romantasy book is listed with its cover, blurb, tropes and spice level, and every character in it; fans make photo collages of the celebrities they'd cast in a film, swoon over (heart) and comment on each other's collages, and every character shows "the fans' pick". A calmer, prettier home for fan-casts than Reddit threads, with real photo management. Built on [Anvil](https://anvil.works).
 
 - **App repo:** github.com/arkulinskis/perfectcast (branch `master`). Anvil pulls `master`.
-- **Live:** not published yet (planned: perfectcast.anvil.app or a custom domain).
+- **Live:** https://perfectcast.anvil.app
 
 ## What it does
 
