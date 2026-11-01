@@ -598,15 +598,47 @@ db_schema:
     title: Users
 metadata:
   description: 'Fan-cast the newest romantasy books: every character, your dream celebrity collage, and what the whole fandom
-    picks.'
+    picks. Swoon over and comment on other readers'' casts.'
   logo_img: asset:icon-512.png
-  title: PerfectCast · fan-cast every new romantasy
+  title: 'PerfectCast: fan-cast every new romantasy book'
 name: PerfectCast
 native_deps:
-  head_html: "<script src=\"_/theme/legal-kit.js?v=845dfbd7c4\"></script>\n<meta name=\"viewport\" content=\"width=device-width,\
-    \ initial-scale=1, viewport-fit=cover\">\n<meta name=\"theme-color\" content=\"#7a1652\">\n<meta name=\"apple-mobile-web-app-capable\"\
-    \ content=\"yes\">\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"\
-    https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Manrope:wght@400;500;600;700;800&display=swap\"\
+  head_html: "<script src=\"_/theme/legal-kit.js?v=845dfbd7c4\"></script>\n<!-- seo:start (APP_MAKER/seo: edit seo/apps/perfectcast.json\
+    \ and run seo.py, not here) -->\n<link rel=\"canonical\" href=\"https://perfectcast.anvil.app/\">\n<meta name=\"robots\"\
+    \ content=\"index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1\">\n<meta name=\"keywords\" content=\"\
+    romantasy fan cast, dream cast book characters, fan casting site, romantasy books 2026, book to movie casting, BookTok\
+    \ fan cast, romantasy new releases, celebrity collage maker, fantasy romance books\">\n<meta name=\"author\" content=\"\
+    Arkvital\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:site_name\" content=\"PerfectCast\"\
+    >\n<meta property=\"og:title\" content=\"PerfectCast: fan-cast every new romantasy book\">\n<meta property=\"og:description\"\
+    \ content=\"Fan-cast the newest romantasy books: every character, your dream celebrity collage, and what the whole fandom\
+    \ picks. Swoon over and comment on other readers&#x27; casts.\">\n<meta property=\"og:locale\" content=\"en_CA\">\n<meta\
+    \ property=\"og:url\" content=\"https://perfectcast.anvil.app/\">\n<meta property=\"og:image\" content=\"https://perfectcast.anvil.app/_/theme/og-image.png\"\
+    >\n<meta property=\"og:image:width\" content=\"1200\"><meta property=\"og:image:height\" content=\"630\">\n<meta property=\"\
+    og:image:alt\" content=\"PerfectCast: Fan-cast the newest romantasy: dream casts, collages, the fans&#x27; pick\">\n<meta\
+    \ name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:title\" content=\"PerfectCast: fan-cast\
+    \ every new romantasy book\">\n<meta name=\"twitter:description\" content=\"Fan-cast the newest romantasy books: every\
+    \ character, your dream celebrity collage, and what the whole fandom picks. Swoon over and comment on other readers&#x27;\
+    \ casts.\">\n<meta name=\"twitter:image\" content=\"https://perfectcast.anvil.app/_/theme/og-image.png\">\n<link rel=\"\
+    alternate\" type=\"text/plain\" title=\"PerfectCast for AI assistants\" href=\"https://perfectcast.anvil.app/llms.txt\"\
+    >\n<script type=\"application/ld+json\">{\"@context\": \"https://schema.org\", \"@graph\": [{\"@type\": \"WebApplication\"\
+    , \"@id\": \"https://perfectcast.anvil.app/#app\", \"name\": \"PerfectCast\", \"url\": \"https://perfectcast.anvil.app/\"\
+    , \"description\": \"Fan-cast the newest romantasy books: every character, your dream celebrity collage, and what the\
+    \ whole fandom picks. Swoon over and comment on other readers' casts.\", \"image\": \"https://perfectcast.anvil.app/_/theme/og-image.png\"\
+    , \"inLanguage\": \"en\", \"publisher\": {\"@id\": \"https://arkvital.com/#org\"}, \"keywords\": \"romantasy fan cast,\
+    \ dream cast book characters, fan casting site, romantasy books 2026, book to movie casting, BookTok fan cast, romantasy\
+    \ new releases, celebrity collage maker, fantasy romance books\", \"applicationCategory\": \"EntertainmentApplication\"\
+    , \"operatingSystem\": \"Any (web browser)\", \"browserRequirements\": \"Requires JavaScript and a modern web browser\"\
+    , \"featureList\": [\"Every new romantasy book with tropes, spice level and characters\", \"Make a dream-cast collage\
+    \ and save it as an image for socials\", \"The fans' pick for every character, with vote shares\", \"Swoons, comments\
+    \ and fan pages\", \"A leaderboard of the most-cast celebrities\"], \"audience\": {\"@type\": \"Audience\", \"audienceType\"\
+    : \"Romantasy readers and BookTok fans\"}}, {\"@type\": \"WebSite\", \"@id\": \"https://perfectcast.anvil.app/#site\"\
+    , \"url\": \"https://perfectcast.anvil.app/\", \"name\": \"PerfectCast\", \"publisher\": {\"@id\": \"https://arkvital.com/#org\"\
+    }}, {\"@type\": \"Organization\", \"@id\": \"https://arkvital.com/#org\", \"name\": \"Arkvital\", \"url\": \"https://arkvital.com\"\
+    , \"email\": \"arkvital@outlook.com\", \"address\": {\"@type\": \"PostalAddress\", \"addressLocality\": \"Montreal\",\
+    \ \"addressRegion\": \"QC\", \"addressCountry\": \"CA\"}}]}</script>\n<!-- seo:end -->\n<meta name=\"viewport\" content=\"\
+    width=device-width, initial-scale=1, viewport-fit=cover\">\n<meta name=\"theme-color\" content=\"#7a1652\">\n<meta name=\"\
+    apple-mobile-web-app-capable\" content=\"yes\">\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link\
+    \ rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Manrope:wght@400;500;600;700;800&display=swap\"\
     \ rel=\"stylesheet\">\n<link id=\"ui-favicon\" rel=\"icon\" type=\"image/svg+xml\" href=\"_/theme/icon.svg?v=b0b5977466\"\
     >\n<link rel=\"apple-touch-icon\" href=\"_/theme/icon-180.png?v=b0b5977466\">\n<script>\n/* Keep our tab icon: Anvil adds\
     \ its own <link rel=\"icon\">, so drop any other icon link. */\n(function () {\n  function keep() {\n    var ours = document.getElementById('ui-favicon');\n\
