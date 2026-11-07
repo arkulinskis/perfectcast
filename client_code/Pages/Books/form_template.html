@@ -1,0 +1,63 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="ui-wrap">
+      <section class="bk-feature" anvil:dom-node="feature" hidden>
+        <div class="bg" anvil:dom-node="feature_bg"></div>
+        <a anvil:dom-node="feature_cover_link" href="#books"><anvil-component type="PerfectCast.Components.Cover" name="feature_cover" prop:full="true"></anvil-component></a>
+        <div>
+          <h1 anvil:dom-node="feature_title"></h1>
+          <div class="by" anvil:dom-node="feature_by"></div>
+          <div class="bk-meta"><span class="pc-when" anvil:dom-node="feature_when"></span><anvil-component type="PerfectCast.Components.Spice" name="feature_spice"></anvil-component><span class="small"><i class="ic ic-heart"></i> <span anvil:dom-node="feature_casts"></span></span></div>
+          <p class="blurb" anvil:dom-node="feature_blurb"></p>
+          <div class="pc-chips bk-feature-tropes"><anvil-component type="RepeatingPanel" name="feature_tropes" prop:item_template="PerfectCast.Items.Tag" prop:role='["contents"]'></anvil-component></div>
+          <div class="ui-row">
+            <a class="ui-btn primary lg" anvil:dom-node="feature_cast" href="#books"><i class="ic ic-sparkle"></i>Cast the characters</a>
+            <anvil-component type="Button" name="feature_share" prop:text="Share" prop:role='["btn", "btn-lg", "ic-share"]'></anvil-component>
+          </div>
+        </div>
+      </section>
+
+      <div class="bk-hello" anvil:dom-node="hello" hidden>
+        <p><b anvil:dom-node="hello_name"></b> <span anvil:dom-node="hello_line"></span></p>
+        <div class="ui-row"><a class="ui-btn sm" href="#mine"><i class="ic ic-heart"></i>My casts</a><a class="ui-btn sm soft" href="#suggest"><i class="ic ic-plus"></i>Suggest a book</a></div>
+      </div>
+
+      <section class="pc-section" anvil:dom-node="soon" hidden>
+        <div class="pc-section-head"><h2>Coming soon</h2><span class="muted small">Cast them before anyone else</span></div>
+        <div class="bk-soon" tabindex="0" aria-label="Coming soon"><anvil-component type="RepeatingPanel" name="soon_panel" prop:item_template="PerfectCast.Items.SoonCard" prop:role='["contents"]'></anvil-component></div>
+      </section>
+
+      <section class="pc-section bk-trend" anvil:dom-node="trend" hidden>
+        <div class="pc-section-head"><h2>Swooned over this week</h2><a href="#stars">The most-cast stars <i class="ic ic-arrow"></i></a></div>
+        <div class="pc-casts"><anvil-component type="RepeatingPanel" name="trend_panel" prop:item_template="PerfectCast.Items.CastCard" prop:role='["contents"]'></anvil-component></div>
+      </section>
+
+      <section class="pc-section">
+        <div class="pc-section-head"><h2>Every book</h2><span class="muted small" anvil:dom-node="count"></span></div>
+        <div class="bk-filters">
+          <div class="row">
+            <anvil-component type="TextBox" name="search_box" prop:placeholder="Search a title, author or series" prop:role='["bk-search"]'></anvil-component>
+            <anvil-component type="DropDown" name="spice_box" prop:role='["bk-spice"]'></anvil-component>
+            <div class="ui-seg" role="group" aria-label="Sort">
+              <button type="button" anvil:name="sort_new" data-sort="new" anvil:on-dom:click="self.sort_click">Newest</button>
+              <button type="button" anvil:name="sort_soon" data-sort="soon" anvil:on-dom:click="self.sort_click">Coming soon</button>
+              <button type="button" anvil:name="sort_cast" data-sort="cast" anvil:on-dom:click="self.sort_click">Most cast</button>
+            </div>
+          </div>
+          <div class="pc-scroll" role="group" aria-label="Tropes"><anvil-component type="RepeatingPanel" name="trope_panel" prop:item_template="PerfectCast.Items.Chip" prop:role='["contents"]'></anvil-component></div>
+        </div>
+        <div class="pc-books"><anvil-component type="RepeatingPanel" name="shelf_panel" prop:item_template="PerfectCast.Items.BookCard" prop:role='["contents"]'></anvil-component></div>
+        <div class="ui-empty" anvil:name="no_books">
+          <i class="ic ic-book"></i><h3>No book matches</h3><p>Try another trope, or suggest the book you're looking for.</p>
+          <anvil-component type="Button" name="suggest_button" prop:text="Suggest a book" prop:role='["btn", "btn-primary", "ic-plus"]'></anvil-component>
+        </div>
+      </section>
+
+      <section class="pc-section">
+        <div class="bk-hello"><p><b>Missing a book?</b> Suggest it with its characters, and an admin will add it to the shelf.</p>
+          <anvil-component type="Button" name="suggest_button_2" prop:text="Suggest a book" prop:role='["btn", "btn-primary", "ic-plus"]'></anvil-component>
+        </div>
+      </section>
+    </div>
+  </anvil-block>
+</anvil-form>

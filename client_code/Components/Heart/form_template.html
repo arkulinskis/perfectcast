@@ -1,0 +1,18 @@
+---
+custom_component: true
+properties:
+  - name: cast
+    type: object
+    default_binding_prop: true
+    description: "A collage card (key, hearts, hearted, mine)"
+  - name: big
+    type: boolean
+    default_value: false
+    description: The large button (the collage page)
+toolbox_item:
+  title: Swoon button
+  group: PerfectCast
+help_text: |
+  The heart button: swoon over a collage (or take it back). Visitors get the sign-up dialog.
+---
+<div class="pc-heart-host"><button type="button" class="pc-heart" anvil:dom-node="btn"><i class="ic ic-heart" anvil:dom-node="icon"></i><span anvil:dom-node="count">0</span></button></div>

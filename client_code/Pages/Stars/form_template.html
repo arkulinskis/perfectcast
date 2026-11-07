@@ -1,0 +1,42 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="pc-page">
+      <div class="ui-wrap" anvil:dom-node="missing" hidden>
+        <div class="ui-empty"><i class="ic ic-info"></i><h2>This page didn't load</h2><p anvil:dom-node="missing_text"></p>
+          <a class="ui-btn" href="#books"><i class="ic ic-book"></i>Back to the books</a></div>
+      </div>
+      <div class="ui-wrap" anvil:dom-node="board" hidden>
+        <div class="ui-page-head"><div><h1>The most-cast stars</h1><p class="muted" anvil:dom-node="board_line"></p></div>
+          <anvil-component type="TextBox" name="search_box" prop:placeholder="Find a star" prop:role='["st-search"]'></anvil-component>
+        </div>
+        <div class="st-podium" anvil:dom-node="podium"><anvil-component type="RepeatingPanel" name="podium_panel" prop:item_template="PerfectCast.Items.PodiumStep" prop:role='["contents"]'></anvil-component></div>
+        <div class="ui-empty" anvil:dom-node="no_stars" hidden><i class="ic ic-star"></i><h3>No stars yet</h3><p>Cast a character, and your stars start the leaderboard.</p></div>
+        <div class="st-list"><anvil-component type="RepeatingPanel" name="list_panel" prop:item_template="PerfectCast.Items.StarRow" prop:role='["contents"]'></anvil-component></div>
+        <div class="ui-empty" anvil:dom-node="no_match" hidden><i class="ic ic-search"></i><h3>Nobody by that name yet</h3><p>Cast them in a collage and they'll appear here.</p></div>
+      </div>
+      <div class="ui-wrap" anvil:dom-node="star" hidden>
+        <a href="#stars" class="small st-back"><i class="ic ic-back"></i> All stars</a>
+        <div class="st-hero">
+          <div class="ph"><img anvil:dom-node="star_img" alt="" hidden><span anvil:dom-node="star_ini"></span></div>
+          <div>
+            <h1 anvil:dom-node="star_name"></h1>
+            <p class="muted st-sub">A fan-cast star</p>
+            <div class="st-stats">
+              <div class="ui-stat"><b anvil:dom-node="s_casts"></b><span anvil:dom-node="s_casts_l"></span></div>
+              <div class="ui-stat"><b anvil:dom-node="s_roles"></b><span anvil:dom-node="s_roles_l"></span></div>
+              <div class="ui-stat"><b anvil:dom-node="s_fans"></b><span anvil:dom-node="s_fans_l"></span></div>
+              <div class="ui-stat"><b anvil:dom-node="s_first"></b><span>fans' #1 picks</span></div>
+            </div>
+          </div>
+        </div>
+        <section><div class="pc-section-head"><h2>Cast as</h2></div>
+          <div class="st-roles"><anvil-component type="RepeatingPanel" name="roles_panel" prop:item_template="PerfectCast.Items.RoleCard" prop:role='["contents"]'></anvil-component></div>
+        </section>
+        <section class="pc-section" anvil:dom-node="gallery" hidden>
+          <div class="pc-section-head"><h2>Fans' photos</h2><span class="muted small">Tap one to see the collage</span></div>
+          <div class="st-gallery"><anvil-component type="RepeatingPanel" name="gallery_panel" prop:item_template="PerfectCast.Items.GalleryTile" prop:role='["contents"]'></anvil-component></div>
+        </section>
+      </div>
+    </div>
+  </anvil-block>
+</anvil-form>

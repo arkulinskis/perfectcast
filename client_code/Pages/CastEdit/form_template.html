@@ -1,0 +1,52 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="pc-page">
+      <div class="ui-wrap" anvil:dom-node="missing" hidden>
+        <div class="ui-empty"><i class="ic ic-info"></i><h2>This page didn't load</h2><p anvil:dom-node="missing_text"></p>
+          <a class="ui-btn" href="#books"><i class="ic ic-book"></i>Back to the books</a></div>
+      </div>
+      <div class="ui-wrap" anvil:dom-node="main">
+        <div class="ce-head">
+          <anvil-component type="PerfectCast.Components.Cover" name="cover"></anvil-component>
+          <div><span class="ui-badge brand" anvil:dom-node="role"></span><h1 anvil:dom-node="title"></h1>
+            <div class="muted">in <a anvil:dom-node="book_link" href="#books"></a><span anvil:dom-node="blurb"></span></div></div>
+        </div>
+        <datalist id="ce-names" anvil:dom-node="names"></datalist>
+        <div class="ce-grid">
+          <div>
+            <div class="ui-card ce-card">
+              <h3>Your stars <span class="small muted" anvil:dom-node="count"></span></h3>
+              <p class="muted small ce-help">The first one is your lead. Add a photo of each from your own camera roll (we keep a small copy).</p>
+              <div class="ce-slots"><anvil-component type="RepeatingPanel" name="slots_panel" prop:item_template="PerfectCast.Items.Slot" prop:role='["contents"]'></anvil-component></div>
+              <anvil-component type="Button" name="add_button" prop:text="Add a star" prop:role='["btn", "btn-block", "ic-plus", "ce-add"]'></anvil-component>
+              <div class="ce-favs" anvil:dom-node="favs"><span class="small muted"><b>Fans' favourites</b>: tap to add (with your own photo)</span>
+                <div class="pc-chips"><anvil-component type="RepeatingPanel" name="favs_panel" prop:item_template="PerfectCast.Items.Chip" prop:role='["contents"]'></anvil-component></div></div>
+            </div>
+            <div class="ui-card ce-card">
+              <h3>Style</h3>
+              <div class="ce-layouts" role="group" aria-label="Layout"><button type="button" class="ce-opt" anvil:name="lay_hero" data-v="hero" anvil:on-dom:click="self.layout_click"><svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><rect x="4" y="6" width="25" height="36" rx="3"/><rect x="32" y="6" width="12" height="17" rx="2" opacity=".55"/><rect x="32" y="25" width="12" height="17" rx="2" opacity=".55"/></svg><span>Leading star</span></button><button type="button" class="ce-opt" anvil:name="lay_grid" data-v="grid" anvil:on-dom:click="self.layout_click"><svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><rect x="4" y="8" width="12" height="15" rx="2"/><rect x="18" y="8" width="12" height="15" rx="2" opacity=".7"/><rect x="32" y="8" width="12" height="15" rx="2" opacity=".5"/><rect x="4" y="26" width="12" height="15" rx="2" opacity=".5"/><rect x="18" y="26" width="12" height="15" rx="2"/><rect x="32" y="26" width="12" height="15" rx="2" opacity=".7"/></svg><span>Gallery grid</span></button><button type="button" class="ce-opt" anvil:name="lay_polaroid" data-v="polaroid" anvil:on-dom:click="self.layout_click"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="9" width="17" height="21" rx="1" transform="rotate(-8 13 19)"/><rect x="25" y="14" width="17" height="21" rx="1" transform="rotate(7 33 24)"/><path d="M8 25h12M28 30h12" opacity=".5"/></svg><span>Polaroid wall</span></button><button type="button" class="ce-opt" anvil:name="lay_strip" data-v="strip" anvil:on-dom:click="self.layout_click"><svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><rect x="2" y="12" width="44" height="24" rx="3" opacity=".25"/><rect x="5" y="16" width="11" height="16" rx="1.5"/><rect x="18.5" y="16" width="11" height="16" rx="1.5"/><rect x="32" y="16" width="11" height="16" rx="1.5"/></svg><span>Film strip</span></button></div>
+              <div class="ce-tones" role="group" aria-label="Colour"><button type="button" class="ce-tone" anvil:name="tone_rose" data-v="rose" anvil:on-dom:click="self.tone_click"><i class="sw sw-rose"></i>Rose</button><button type="button" class="ce-tone" anvil:name="tone_violet" data-v="violet" anvil:on-dom:click="self.tone_click"><i class="sw sw-violet"></i>Violet</button><button type="button" class="ce-tone" anvil:name="tone_crimson" data-v="crimson" anvil:on-dom:click="self.tone_click"><i class="sw sw-crimson"></i>Crimson</button><button type="button" class="ce-tone" anvil:name="tone_midnight" data-v="midnight" anvil:on-dom:click="self.tone_click"><i class="sw sw-midnight"></i>Midnight</button></div>
+            </div>
+            <div class="ui-card ce-card">
+              <h3>Caption</h3>
+              <anvil-component type="TextArea" name="caption_box" prop:placeholder="Make your case. Why is this THE cast?" prop:height="90"></anvil-component>
+            </div>
+            <div class="ui-card ce-card tight">
+              <anvil-component type="PerfectCast.Components.Quota" name="quota"></anvil-component>
+              <p class="small muted ce-quota-note">Photos are shrunk to 600×750 before upload. <a href="#photos">Manage your photo drawer</a></p>
+            </div>
+          </div>
+          <div class="ce-preview">
+            <h2 class="ce-preview-h">Preview</h2>
+            <anvil-component type="PerfectCast.Components.Collage" name="preview" prop:big="true"></anvil-component>
+            <p class="cap" anvil:dom-node="cap_preview"></p>
+            <div class="ce-save">
+              <anvil-component type="Button" name="save_button" prop:text="Publish my collage" prop:role='["btn", "btn-primary", "btn-lg", "btn-block", "ic-heart"]'></anvil-component>
+              <a class="ui-btn block" anvil:dom-node="second_link" href="#books"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </anvil-block>
+</anvil-form>

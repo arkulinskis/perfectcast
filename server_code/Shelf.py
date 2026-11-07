@@ -228,7 +228,7 @@ def list_stars():
     """The Stars page: every celebrity the fans have cast, most-cast first."""
     DemoData.ensure_loaded()
     tally = _star_tally()
-    stars = []
+    stars: list = []
     for k, t in tally.items():
         chars = list(t["characters"].values())
         top_role = None
@@ -258,7 +258,7 @@ def get_star(slug):
         roles.append(dict(char_ref(ch), book=book_card(ch["book"], 0), votes=mine[0]["votes"], pct=mine[0]["pct"],
                           rank=rank, photo=mine[0]["photo"]))
     roles.sort(key=lambda r: (r["rank"], -r["votes"]))
-    gallery = []
+    gallery: list = []
     seen = set()
     for pk in app_tables.picks.search(star_key=slug):
         c, key = pk["casting"], photo_key(pk["photo"])

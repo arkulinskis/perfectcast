@@ -1,0 +1,22 @@
+<div class="ui dlg-host">
+  <h2 class="dlg-h" anvil:dom-node="title">Photo</h2>
+  <div class="ph-detail">
+    <img anvil:dom-node="img" alt="">
+    <div class="ui-stack">
+      <label class="ui-field"><span>Name</span>
+        <anvil-component type="TextBox" name="label_box" prop:placeholder="Who is this?"></anvil-component>
+      </label>
+      <anvil-component type="Button" name="rename_button" prop:text="Save name" prop:role='["btn", "btn-sm"]'></anvil-component>
+      <p class="small muted" anvil:dom-node="meta"></p>
+      <div anvil:name="uses_part"><b class="small">Used in</b>
+        <div class="ph-uses" role="list"><anvil-component type="RepeatingPanel" name="uses_panel" prop:item_template="PerfectCast.Items.UseLink" prop:role='["contents"]'></anvil-component></div>
+      </div>
+      <p class="small muted" anvil:dom-node="unused" hidden>Not in any collage yet.</p>
+      <div class="ui-row">
+        <anvil-component type="Button" name="delete_button" prop:text="Delete photo" prop:role='["btn", "btn-sm", "btn-danger", "ic-trash"]'></anvil-component>
+        <span class="ui-spacer"></span>
+        <anvil-component type="Button" name="close_button" prop:text="Close" prop:role='["btn", "btn-ghost"]'></anvil-component>
+      </div>
+    </div>
+  </div>
+</div>

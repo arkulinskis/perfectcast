@@ -1,0 +1,95 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="ui-wrap">
+      <div class="ui-page-head"><div><h1>Admin</h1><p class="muted">Only admins see this page.</p></div></div>
+      <nav class="ui-tabs" aria-label="Admin sections">
+        <a href="#admin/overview" anvil:name="tab_overview"><i class="ic ic-grid"></i>Overview</a>
+        <a href="#admin/books" anvil:name="tab_books"><i class="ic ic-book"></i>Books</a>
+        <a href="#admin/queue" anvil:name="tab_queue"><i class="ic ic-check"></i>Review</a>
+        <a href="#admin/reports" anvil:name="tab_reports"><i class="ic ic-flag"></i>Reports</a>
+        <a href="#admin/feedback" anvil:name="tab_feedback"><i class="ic ic-inbox"></i>Feedback</a>
+        <a href="#admin/users" anvil:name="tab_users"><i class="ic ic-users"></i>Users</a>
+        <a href="#admin/demo" anvil:name="tab_demo"><i class="ic ic-database"></i>Demo data</a>
+      </nav>
+
+      <div anvil:name="overview_part">
+        <div class="ad-stats">
+          <a class="ui-card ui-stat ad-stat" href="#admin/users"><b anvil:dom-node="s_users"></b><span>people signed up</span></a>
+          <a class="ui-card ui-stat ad-stat" href="#admin/books"><b anvil:dom-node="s_books"></b><span>live books</span></a>
+          <a class="ui-card ui-stat ad-stat" href="#books"><b anvil:dom-node="s_castings"></b><span>collages</span></a>
+          <div class="ui-card ui-stat ad-stat"><b anvil:dom-node="s_photos"></b><span anvil:dom-node="s_photos_l"></span></div>
+          <a class="ui-card ui-stat ad-stat" href="#admin/queue"><b anvil:dom-node="s_queue"></b><span>waiting for review</span></a>
+          <a class="ui-card ui-stat ad-stat" href="#admin/reports"><b anvil:dom-node="s_reports"></b><span>open reports</span></a>
+          <a class="ui-card ui-stat ad-stat" href="#admin/feedback"><b anvil:dom-node="s_feedback"></b><span>new feedback</span></a>
+          <a class="ui-card ui-stat ad-stat" href="#admin/users"><b anvil:dom-node="s_admins"></b><span anvil:dom-node="s_admins_l"></span></a>
+        </div>
+        <p class="muted small ad-demo-line" anvil:dom-node="demo_line"></p>
+      </div>
+
+      <div anvil:name="books_part">
+        <div class="ui-row between ad-books-head"><span class="muted small" anvil:dom-node="books_count"></span>
+          <anvil-component type="Button" name="new_book_button" prop:text="Add a book" prop:role='["btn", "btn-primary", "ic-plus"]'></anvil-component></div>
+        <div class="ad-books"><anvil-component type="RepeatingPanel" name="books_panel" prop:item_template="PerfectCast.Items.AdminBook" prop:role='["contents"]'></anvil-component></div>
+      </div>
+
+      <div anvil:name="queue_part">
+        <h3>Suggested books <span class="muted small" anvil:dom-node="q_books_n"></span></h3>
+        <div class="ad-q"><anvil-component type="RepeatingPanel" name="q_books_panel" prop:item_template="PerfectCast.Items.QueueBook" prop:role='["contents"]'></anvil-component></div>
+        <p class="muted" anvil:dom-node="q_books_none" hidden>Nothing waiting.</p>
+        <h3 class="ad-q-h2">Suggested characters <span class="muted small" anvil:dom-node="q_chars_n"></span></h3>
+        <div class="ad-q"><anvil-component type="RepeatingPanel" name="q_chars_panel" prop:item_template="PerfectCast.Items.QueueChar" prop:role='["contents"]'></anvil-component></div>
+        <p class="muted" anvil:dom-node="q_chars_none" hidden>Nothing waiting.</p>
+      </div>
+
+      <div anvil:name="reports_part">
+        <div class="ui-row ad-filter">
+          <div class="ui-seg" role="group" aria-label="Which reports">
+            <button type="button" anvil:name="r_open" data-f="open" anvil:on-dom:click="self.rep_filter_click">Open <span anvil:dom-node="r_open_n"></span></button>
+            <button type="button" anvil:name="r_all" data-f="all" anvil:on-dom:click="self.rep_filter_click">All</button>
+          </div>
+        </div>
+        <div class="ad-fb ad-rep"><anvil-component type="RepeatingPanel" name="reports_panel" prop:item_template="PerfectCast.Items.ReportRow" prop:role='["contents"]'></anvil-component></div>
+        <div class="ui-empty" anvil:dom-node="no_reports" hidden><i class="ic ic-flag"></i><h3>No reports</h3><p>Reports from members show up here.</p></div>
+      </div>
+
+      <div anvil:name="feedback_part">
+        <div class="ui-row ad-filter">
+          <div class="ui-seg">
+            <anvil-component type="Button" name="f_new" prop:text="New" prop:role='["seg"]'></anvil-component>
+            <anvil-component type="Button" name="f_read" prop:text="Read" prop:role='["seg"]'></anvil-component>
+            <anvil-component type="Button" name="f_done" prop:text="Done" prop:role='["seg"]'></anvil-component>
+            <anvil-component type="Button" name="f_all" prop:text="All" prop:role='["seg"]'></anvil-component>
+          </div>
+        </div>
+        <anvil-component type="RepeatingPanel" name="feedback_panel" prop:item_template="PerfectCast.Items.FeedbackRow" prop:role='["ad-fb"]'></anvil-component>
+        <div class="ui-empty" anvil:name="no_feedback">
+          <i class="ic ic-inbox"></i>
+          <h2>No messages here</h2>
+          <p>New feedback goes to Prepsto (prepsto.com). Older messages and requests from the app show up here.</p>
+        </div>
+      </div>
+
+      <div anvil:name="users_part">
+        <div class="ui-row ad-search">
+          <anvil-component type="TextBox" name="search_box" prop:placeholder="Search by name or email" prop:role='["ad-search-box"]'></anvil-component>
+          <anvil-component type="Button" name="search_button" prop:text="Search" prop:role='["btn", "ic-search"]'></anvil-component>
+          <anvil-component type="Label" name="users_count" prop:role='["fine-print"]'></anvil-component>
+        </div>
+        <div class="ad-table ad-users-head"><b>Name</b><b>Email</b><b>Joined</b><b>Admin</b><b>Active</b></div>
+        <anvil-component type="RepeatingPanel" name="users_panel" prop:item_template="PerfectCast.Items.UserRow"></anvil-component>
+      </div>
+
+      <div anvil:name="demo_part">
+        <div class="ui-card ui-narrow ad-demo">
+          <h3>Demo data</h3>
+          <p class="muted">Example fans, books and collages, so the app never looks empty for the first visitors. Demo rows are flagged, so removing them never touches real data. Once removed, it stays removed until you load it again.</p>
+          <anvil-component type="Label" name="demo_status"></anvil-component>
+          <div class="ui-row">
+            <anvil-component type="Button" name="demo_load_button" prop:text="Load demo data" prop:role='["btn", "btn-primary", "ic-refresh"]'></anvil-component>
+            <anvil-component type="Button" name="demo_remove_button" prop:text="Remove demo data" prop:role='["btn", "btn-danger", "ic-trash"]'></anvil-component>
+          </div>
+        </div>
+      </div>
+    </div>
+  </anvil-block>
+</anvil-form>

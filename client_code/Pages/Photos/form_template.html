@@ -1,0 +1,39 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="ui-wrap">
+      <div class="ui-page-head"><div><h1>Your photo drawer</h1><p class="muted">Every star you've uploaded, ready to reuse in any collage.</p></div></div>
+      <div class="ph-top">
+        <anvil-component type="PerfectCast.Components.Quota" name="quota"></anvil-component>
+        <label class="ui-btn primary ph-upload"><i class="ic ic-upload"></i>Upload photos<input type="file" accept="image/jpeg,image/png,image/webp,image/*" multiple anvil:dom-node="file"></label>
+      </div>
+      <div class="ph-bar">
+        <div class="ui-seg" role="group" aria-label="Filter">
+          <button type="button" anvil:name="f_all" data-f="all" anvil:on-dom:click="self.filter_click">All</button>
+          <button type="button" anvil:name="f_used" data-f="used" anvil:on-dom:click="self.filter_click">In use</button>
+          <button type="button" anvil:name="f_unused" data-f="unused" anvil:on-dom:click="self.filter_click">Unused</button>
+          <button type="button" anvil:name="f_cover" data-f="cover" anvil:on-dom:click="self.filter_click">Covers</button>
+        </div>
+        <anvil-component type="TextBox" name="search_box" prop:placeholder="Find a star" prop:role='["ph-search"]'></anvil-component>
+        <span class="ui-spacer"></span>
+        <anvil-component type="Button" name="select_button" prop:text="Select" prop:role='["btn", "btn-sm"]'></anvil-component>
+      </div>
+      <div class="ph-grid" anvil:dom-node="grid"><anvil-component type="RepeatingPanel" name="grid_panel" prop:item_template="PerfectCast.Items.PhotoTile" prop:role='["contents"]'></anvil-component></div>
+      <div class="ui-empty" anvil:dom-node="empty" hidden><i class="ic ic-image"></i><h3 anvil:dom-node="empty_h"></h3><p anvil:dom-node="empty_p"></p></div>
+      <div class="ph-bulk" anvil:name="bulk">
+        <span anvil:dom-node="bulk_n"></span>
+        <div class="ui-row">
+          <anvil-component type="Button" name="unused_button" prop:text="Select all unused" prop:role='["btn", "btn-sm"]'></anvil-component>
+          <anvil-component type="Button" name="bulk_delete_button" prop:text="Delete" prop:role='["btn", "btn-sm", "btn-danger", "btn-solid", "ic-trash"]'></anvil-component>
+        </div>
+      </div>
+      <div class="ui-card ph-tips">
+        <h3>Good to know</h3>
+        <ul>
+          <li>Every photo is cropped and shrunk on your device to 600×750 (about 50–120 KB) before upload, so your drawer stays light. Location and camera details are removed.</li>
+          <li anvil:dom-node="limit_line"></li>
+          <li>Only upload pictures you're allowed to share, of public figures. No private people.</li>
+        </ul>
+      </div>
+    </div>
+  </anvil-block>
+</anvil-form>
