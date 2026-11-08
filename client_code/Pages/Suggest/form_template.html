@@ -1,0 +1,21 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="ui-wrap">
+      <div class="ui-page-head"><div><h1>Suggest a book</h1><p class="muted">A new romantasy everyone should be casting? Add it with its characters.</p></div></div>
+      <div class="sg-intro">
+        <div class="ui-card">
+          <anvil-component type="PerfectCast.Components.BookForm" name="form"></anvil-component>
+          <div class="ui-row end sg-actions">
+            <a class="ui-btn ghost" href="#books">Cancel</a>
+            <anvil-component type="Button" name="send_button" prop:text="Send for review" prop:role='["btn", "btn-primary", "ic-sparkle"]'></anvil-component>
+          </div>
+        </div>
+        <aside class="sg-side"><h3>How it works</h3><ul>
+          <li>An admin checks the book (usually within a day), then it joins the shelf for everyone.</li>
+          <li>Only you see it until then: you'll find it under its own link.</li>
+          <li>Use the publisher's cover if you can share it, or skip it: we'll add one.</li>
+          <li anvil:dom-node="count_line"></li></ul></aside>
+      </div>
+    </div>
+  </anvil-block>
+</anvil-form>

@@ -1,0 +1,49 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="pc-page">
+      <div class="ui-wrap" anvil:dom-node="missing" hidden>
+        <div class="ui-empty"><i class="ic ic-info"></i><h2>This page didn't load</h2><p anvil:dom-node="missing_text"></p>
+          <a class="ui-btn" href="#books"><i class="ic ic-book"></i>Back to the books</a></div>
+      </div>
+      <div class="ui-wrap" anvil:dom-node="main">
+        <div class="cp-head">
+          <a anvil:dom-node="cover_link" href="#books"><anvil-component type="PerfectCast.Components.Cover" name="cover"></anvil-component></a>
+          <div>
+            <span class="ui-badge brand" anvil:dom-node="role"></span>
+            <h1 anvil:dom-node="name"></h1>
+            <a class="book" anvil:dom-node="book_link" href="#books"></a> <span class="muted" anvil:dom-node="author"></span>
+            <p anvil:dom-node="blurb"></p>
+          </div>
+          <anvil-component type="Button" name="cast_button" prop:text="Cast" prop:role='["btn", "btn-primary", "btn-lg", "ic-sparkle"]'></anvil-component>
+        </div>
+        <nav class="pc-scroll cp-sibs" aria-label="Other characters" tabindex="0"><anvil-component type="RepeatingPanel" name="sibs_panel" prop:item_template="PerfectCast.Items.LinkChip" prop:role='["contents"]'></anvil-component></nav>
+        <section class="cp-pick">
+          <div>
+            <h2 class="cp-pick-h">The fans' pick</h2>
+            <div class="cp-podium" anvil:dom-node="podium"><anvil-component type="RepeatingPanel" name="podium_panel" prop:item_template="PerfectCast.Items.PodiumStep" prop:role='["contents"]'></anvil-component></div>
+            <div class="cp-empty-pick" anvil:dom-node="no_pick" hidden><h3>No fans' pick yet</h3><p class="muted">Be the first to cast this character, and your stars lead the vote.</p></div>
+          </div>
+          <div>
+            <h3 class="cp-votes-h">Every vote</h3>
+            <div class="cp-bars"><anvil-component type="RepeatingPanel" name="bars_panel" prop:item_template="PerfectCast.Items.VoteBar" prop:role='["contents"]'></anvil-component></div>
+            <p class="muted" anvil:dom-node="no_votes" hidden>No votes yet.</p>
+            <p class="small muted cp-note">One vote per collage for every star in it.</p>
+          </div>
+        </section>
+        <section class="pc-section">
+          <div class="pc-section-head"><h2 anvil:dom-node="total"></h2>
+            <div class="ui-seg" role="group" aria-label="Sort">
+              <button type="button" anvil:name="sort_loved" data-sort="loved" anvil:on-dom:click="self.sort_click">Most swooned</button>
+              <button type="button" anvil:name="sort_new" data-sort="new" anvil:on-dom:click="self.sort_click">Newest</button>
+            </div>
+          </div>
+          <div class="pc-casts"><anvil-component type="RepeatingPanel" name="casts_panel" prop:item_template="PerfectCast.Items.CastCard" prop:role='["contents"]'></anvil-component></div>
+          <div class="ui-empty" anvil:name="no_casts">
+            <i class="ic ic-sparkle"></i><h3>No collages yet</h3><p anvil:dom-node="empty_line"></p>
+            <anvil-component type="Button" name="cast_button_2" prop:text="Cast" prop:role='["btn", "btn-primary", "ic-sparkle"]'></anvil-component>
+          </div>
+        </section>
+      </div>
+    </div>
+  </anvil-block>
+</anvil-form>

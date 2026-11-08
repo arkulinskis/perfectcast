@@ -1,0 +1,14 @@
+<div class="ui dlg-host">
+  <h2 class="dlg-h" anvil:dom-node="title">Frame the photo</h2>
+  <p class="muted small" anvil:dom-node="hint"></p>
+  <div class="pc-crop" anvil:dom-node="frame" tabindex="0" role="application" aria-label="Photo framing: drag or use the arrow keys to move, + and - to zoom"></div>
+  <label class="pc-zoom"><i class="ic ic-image"></i><input type="range" min="1" max="4" step="0.01" value="1" aria-label="Zoom" anvil:dom-node="zoom"><i class="ic ic-search"></i></label>
+  <label class="ui-field pc-crop-name" anvil:name="name_field"><span>Who is this?</span>
+    <anvil-component type="TextBox" name="name_box" prop:placeholder="The star's name"></anvil-component>
+  </label>
+  <anvil-component type="Label" name="message" prop:role='["msg-error"]' prop:visible="false"></anvil-component>
+  <div class="ui-row end">
+    <anvil-component type="Button" name="cancel_button" prop:text="Cancel" prop:role='["btn", "btn-ghost"]'></anvil-component>
+    <anvil-component type="Button" name="use_button" prop:text="Use this photo" prop:enabled="false" prop:role='["btn", "btn-primary", "ic-check"]'></anvil-component>
+  </div>
+</div>

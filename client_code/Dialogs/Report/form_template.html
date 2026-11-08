@@ -1,0 +1,20 @@
+<div class="ui dlg-host">
+  <h2 class="dlg-h" anvil:dom-node="title">Report this collage</h2>
+  <p class="muted">Only the admins see reports. Thank you for keeping PerfectCast kind.</p>
+  <div class="ui-stack">
+    <div class="ui-choices" role="radiogroup" aria-label="Reason">
+      <anvil-component type="RadioButton" name="r_rude" prop:text="Rude or hateful" prop:value="rude" prop:group_name="reason" prop:selected="true" prop:role='["choice"]'></anvil-component>
+      <anvil-component type="RadioButton" name="r_spam" prop:text="Spam or ads" prop:value="spam" prop:group_name="reason" prop:role='["choice"]'></anvil-component>
+      <anvil-component type="RadioButton" name="r_explicit" prop:text="Explicit picture" prop:value="explicit" prop:group_name="reason" prop:role='["choice"]'></anvil-component>
+      <anvil-component type="RadioButton" name="r_privacy" prop:text="Private person or stolen photo" prop:value="privacy" prop:group_name="reason" prop:role='["choice"]'></anvil-component>
+      <anvil-component type="RadioButton" name="r_other" prop:text="Something else" prop:value="other" prop:group_name="reason" prop:role='["choice"]'></anvil-component>
+    </div>
+    <label class="ui-field"><span>Anything to add? <em>(optional)</em></span>
+      <anvil-component type="TextArea" name="note_box" prop:height="80"></anvil-component>
+    </label>
+    <div class="ui-row end">
+      <anvil-component type="Button" name="cancel_button" prop:text="Cancel" prop:role='["btn", "btn-ghost"]'></anvil-component>
+      <anvil-component type="Button" name="send_button" prop:text="Send report" prop:role='["btn", "btn-primary", "ic-flag"]'></anvil-component>
+    </div>
+  </div>
+</div>

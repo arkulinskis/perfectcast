@@ -1,0 +1,112 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="page-landing">
+      <section class="lp-hero">
+        <div class="ui-wrap">
+          <div>
+            <h1>Who do you see <em>when you read?</em></h1>
+            <p class="lp-lead">Fan-casting for romantasy readers: every new release, every character, and your dream cast as a gorgeous photo collage. Swoon over other fans' picks and watch the fandom crown its favourites.</p>
+            <div class="lp-cta" anvil:dom-node="guest_cta">
+              <a class="ui-btn primary lg" href="#auth/signup">Start casting, it's free <i class="ic ic-arrow"></i></a>
+              <a class="ui-btn lg" href="#books">Browse new releases</a>
+            </div>
+            <div class="lp-cta" anvil:dom-node="member_cta" hidden>
+              <a class="ui-btn primary lg" href="#books">Open the shelf <i class="ic ic-arrow"></i></a>
+            </div>
+            <div class="lp-proof">
+              <span><i class="ic ic-check"></i>Every new release</span>
+              <span><i class="ic ic-check"></i>Your own photo collages</span>
+              <span><i class="ic ic-check"></i>No endless threads</span>
+            </div>
+          </div>
+          <div class="lp-art" aria-hidden="true">
+            <div class="lp-book"><small>THE EMBER COURTS</small><i class="ic ic-crown"></i><b>A Crown of<br>Ash &amp; Honey</b><small>MIRELLE THORNE</small></div>
+            <div class="lp-pol p1"><i class="lp-face"></i><span>The lead</span></div>
+            <div class="lp-pol p2"><i class="lp-face"></i><span>The prince</span></div>
+            <div class="lp-pol p3"><i class="lp-face"></i><span>The villain</span></div>
+            <div class="lp-vote"><span><i class="ic ic-crown"></i> Fans' pick for Isolde</span><b>Saoirse Vale</b><div class="pc-meter"><b style="width:62%"></b></div><span>62% of collages</span></div>
+            <div class="lp-heart"><i class="ic ic-heartfill"></i></div>
+            <span class="lp-spark s1">&#10022;</span><span class="lp-spark s2">&#10022;</span><span class="lp-spark s3">&#10022;</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section ytf" id="watch">
+        <div class="ui-wrap">
+          <div class="ytf-in">
+            <div class="ytf-copy">
+              <h2>See PerfectCast in about a minute</h2>
+              <p>A short tour of what PerfectCast does and how it works.</p>
+              <a class="ytf-link" href="https://www.youtube.com/watch?v=_pmaxTfTg38" target="_blank" rel="noopener"><svg viewBox="0 0 28 20" width="20" height="14" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0033"/><path d="M11.2 5.8v8.4l7.3-4.2z" fill="#fff"/></svg>Watch on YouTube &#8599;</a>
+            </div>
+            <div>
+              <div class="ytf-frame" anvil:dom-node="yt_frame">
+                <button type="button" class="ytf-cover" anvil:dom-node="yt_cover" aria-label="Play the PerfectCast video (1:08)">
+                  <img src="_/theme/yt-cover.jpg" alt="" loading="lazy" decoding="async" width="960" height="540">
+                  <span class="ytf-play" aria-hidden="true"><svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.3.3 34 .3 34 .3s-21.3 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6c5.2 1.4 26.5 1.4 26.5 1.4s21.3 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#FF0033"/><path d="M45 24 27 14v20z" fill="#fff"/></svg></span>
+                  <span class="ytf-len">1:08</span>
+                </button>
+              </div>
+              <p class="ytf-note">The video loads from YouTube when you press play.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section" anvil:dom-node="shelf" hidden>
+        <div class="ui-wrap">
+          <div class="pc-section-head"><h2>Fresh on the shelf</h2><a href="#books">See every book <i class="ic ic-arrow"></i></a></div>
+          <div class="lp-shelf"><anvil-component type="RepeatingPanel" name="shelf_panel" prop:item_template="PerfectCast.Items.BookCard" prop:role='["contents"]'></anvil-component></div>
+        </div>
+      </section>
+
+      <section class="lp-section" id="how">
+        <div class="ui-wrap">
+          <div class="lp-head"><h2>How it works</h2><p>From the last page to your dream cast in a couple of minutes.</p></div>
+          <div class="lp-steps">
+            <div class="ui-card lp-step"><h3>Pick a new release</h3><p class="muted">Browse the newest romantasy books, with covers, tropes and spice levels. Every character is listed.</p></div>
+            <div class="ui-card lp-step"><h3>Cast with your own photos</h3><p class="muted">Add up to six stars per character. Frame each photo in a tap; we keep a small copy in your drawer to reuse anytime.</p></div>
+            <div class="ui-card lp-step"><h3>See who the fans crown</h3><p class="muted">Swoon over other collages, comment, and watch the fans' pick rise to the top of every character.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section">
+        <div class="ui-wrap">
+          <div class="lp-head"><h2>A home for fan-casts, not another thread</h2></div>
+          <div class="ui-grid lp-feats">
+            <div class="ui-card lp-feature"><i class="ic ic-book"></i><h3>Every new romantasy</h3><p>New releases and upcoming books with countdowns. Missing one? Suggest it with its characters.</p></div>
+            <div class="ui-card lp-feature"><i class="ic ic-grid"></i><h3>Four collage styles</h3><p>Leading star, gallery grid, polaroid wall or film strip, in rose, violet, crimson or midnight.</p></div>
+            <div class="ui-card lp-feature"><i class="ic ic-image"></i><h3>A tidy photo drawer</h3><p>Photos are cropped and shrunk on your phone before upload. Reuse them across collages, rename, clean up.</p></div>
+            <div class="ui-card lp-feature"><i class="ic ic-crown"></i><h3>The fans' pick</h3><p>Every character shows the stars fans chose most, with a podium and the share of the vote.</p></div>
+            <div class="ui-card lp-feature"><i class="ic ic-heart"></i><h3>Swoons and comments</h3><p>Heart the collages you love, talk about them, and build your own public fan page.</p></div>
+            <div class="ui-card lp-feature"><i class="ic ic-download"></i><h3>Save and share</h3><p>Turn any collage into a ready-to-post image for your socials, or share its link.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section">
+        <div class="ui-wrap">
+          <div class="lp-head"><h2>Questions</h2></div>
+          <div class="lp-faq">
+            <details><summary>Is it free?</summary><p>Yes. PerfectCast is free, with no ads.</p></details>
+            <details><summary>Which books are on PerfectCast?</summary><p>New and upcoming romantasy releases. Members can suggest books and characters; an admin checks them before they go live.</p></details>
+            <details><summary>Which photos can I use?</summary><p>Photos of public figures that you're allowed to share. No private people, nothing explicit. Members can report a collage and admins remove what breaks the rules.</p></details>
+            <details><summary>Why are photos so small?</summary><p>To keep things fast and light, every photo is cropped on your device and saved at 600×750 pixels (a book cover at 600×900). Each member can keep up to 60 photos.</p></details>
+            <details><summary>Who can see my collages?</summary><p>Everyone: collages, captions and comments are public, with your display name. Your email is never shown. The Privacy &amp; Terms page has the details.</p></details>
+            <details><summary>Does it work on my phone?</summary><p>Yes. It works in any modern browser, and you can add it to your home screen.</p></details>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section">
+        <div class="ui-wrap">
+          <div class="lp-band">
+            <div><h2>Your dream cast is waiting.</h2><p>Join the fans casting the newest romantasy, one collage at a time.</p></div>
+            <a class="ui-btn lg" href="#auth/signup" anvil:dom-node="band_link">Start casting, it's free</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </anvil-block>
+</anvil-form>

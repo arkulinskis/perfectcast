@@ -1,0 +1,14 @@
+---
+custom_component: true
+properties:
+  - name: quota
+    type: object
+    default_binding_prop: true
+    description: "{used, max, bytes} from the server"
+toolbox_item:
+  title: Photo quota
+  group: PerfectCast
+help_text: |
+  How full the member's photo drawer is: a count, the size, and a meter.
+---
+<div class="pc-quota-host"><div class="pc-quota"><div class="ui-row between small"><span><b anvil:dom-node="used">0</b><span anvil:dom-node="of"></span></span><span class="muted" anvil:dom-node="size"></span></div><div class="pc-meter" anvil:dom-node="meter"><b anvil:dom-node="bar"></b></div></div></div>

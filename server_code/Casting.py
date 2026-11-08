@@ -140,7 +140,7 @@ def save_casting(char_key, caption, layout, tone, picks):
     now = C.now()
     c = app_tables.castings.get(user=me, character=ch)
     created = c is None
-    fields = dict(caption=C.text(caption, 280, multiline=True), layout=layout if layout in LAYOUTS else "hero",
+    fields: dict = dict(caption=C.text(caption, 280, multiline=True), layout=layout if layout in LAYOUTS else "hero",
                   tone=tone if tone in TONES else "rose", updated=now)
     if c is None:
         c = app_tables.castings.add_row(key=C.token(12), user=me, character=ch, book=ch["book"], hearts=0, hidden=False,

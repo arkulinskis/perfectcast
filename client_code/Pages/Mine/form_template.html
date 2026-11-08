@@ -1,0 +1,35 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="ui-wrap">
+      <div class="ui-page-head"><div><h1>My casts</h1><p class="muted">Your collages, your swoons, your corner of the fandom.</p></div>
+        <a class="ui-btn primary" href="#books"><i class="ic ic-sparkle"></i>Cast someone new</a></div>
+      <div class="mn-stats">
+        <div class="ui-card"><div class="ui-stat"><b anvil:dom-node="s_casts"></b><span anvil:dom-node="s_casts_l"></span></div></div>
+        <div class="ui-card"><div class="ui-stat"><b anvil:dom-node="s_hearts"></b><span>swoons received</span></div></div>
+        <div class="ui-card"><div class="ui-stat"><b anvil:dom-node="s_comments"></b><span>comments received</span></div></div>
+        <div class="ui-card"><div class="ui-stat"><b anvil:dom-node="s_books"></b><span anvil:dom-node="s_books_l"></span></div></div>
+      </div>
+      <div class="mn-me">
+        <div class="mn-bio">
+          <anvil-component type="TextBox" name="bio_box" prop:placeholder="A line about you for your fan page (your favourite tropes?)"></anvil-component>
+          <anvil-component type="Button" name="bio_button" prop:text="Save" prop:role='["btn", "btn-sm"]'></anvil-component>
+        </div>
+        <a class="ui-btn sm soft" anvil:dom-node="fan_link" href="#books"><i class="ic ic-eye"></i>My public page</a>
+      </div>
+      <section anvil:dom-node="waiting" hidden>
+        <div class="pc-section-head"><h2>Finish the cast</h2><span class="muted small">Characters from books you've started</span></div>
+        <div class="pc-scroll mn-wait" tabindex="0" aria-label="Characters still to cast"><anvil-component type="RepeatingPanel" name="wait_panel" prop:item_template="PerfectCast.Items.WaitCard" prop:role='["contents"]'></anvil-component></div>
+      </section>
+      <section class="pc-section">
+        <div class="pc-section-head"><h2>Your collages</h2></div>
+        <div class="pc-casts"><anvil-component type="RepeatingPanel" name="casts_panel" prop:item_template="PerfectCast.Items.CastCard" prop:role='["contents"]'></anvil-component></div>
+        <div class="ui-empty" anvil:name="no_casts"><i class="ic ic-sparkle"></i><h3>No collages yet</h3><p>Open a book, pick a character, and cast your dream stars.</p>
+          <a class="ui-btn primary" href="#books">Browse new releases</a></div>
+      </section>
+      <section class="pc-section" anvil:dom-node="swooned" hidden>
+        <div class="pc-section-head"><h2>You swooned over</h2></div>
+        <div class="pc-casts"><anvil-component type="RepeatingPanel" name="swoon_panel" prop:item_template="PerfectCast.Items.CastCard" prop:role='["contents"]'></anvil-component></div>
+      </section>
+    </div>
+  </anvil-block>
+</anvil-form>

@@ -1,0 +1,43 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="pc-page">
+      <div class="ui-wrap" anvil:dom-node="missing" hidden>
+        <div class="ui-empty"><i class="ic ic-info"></i><h2>This page didn't load</h2><p anvil:dom-node="missing_text"></p>
+          <a class="ui-btn" href="#books"><i class="ic ic-book"></i>Back to the books</a></div>
+      </div>
+      <div anvil:dom-node="main">
+        <section class="bp-hero">
+          <div class="bg" anvil:dom-node="bg"></div>
+          <div class="ui-wrap">
+            <anvil-component type="PerfectCast.Components.Cover" name="cover" prop:full="true"></anvil-component>
+            <div>
+              <h1 anvil:dom-node="title"></h1>
+              <div class="by" anvil:dom-node="by"></div>
+              <div class="stats"><span class="pc-when" anvil:dom-node="when"></span><anvil-component type="PerfectCast.Components.Spice" name="spice"></anvil-component><span><i class="ic ic-heart"></i> <span anvil:dom-node="casts"></span></span><span><i class="ic ic-users"></i> <span anvil:dom-node="fans"></span></span></div>
+              <p class="blurb" anvil:dom-node="blurb"></p>
+              <div class="pc-chips bp-tropes"><anvil-component type="RepeatingPanel" name="tropes_panel" prop:item_template="PerfectCast.Items.Tag" prop:role='["contents"]'></anvil-component></div>
+              <div class="ui-row">
+                <anvil-component type="Button" name="jump_button" prop:text="Cast a character" prop:role='["btn", "btn-primary", "btn-lg", "ic-sparkle"]'></anvil-component>
+                <anvil-component type="Button" name="share_button" prop:text="Share" prop:role='["btn", "btn-lg", "ic-share"]'></anvil-component>
+                <a class="ui-btn lg" href="#admin/books" anvil:dom-node="edit_link" hidden><i class="ic ic-edit"></i>Edit</a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="ui-wrap">
+          <div class="bp-pending" anvil:dom-node="pending" hidden><i class="ic ic-clock"></i> This book is waiting for an admin's review. Only you (and the admins) can see it for now.</div>
+          <section anvil:dom-node="cast_section">
+            <div class="pc-section-head"><div><h2>The fans' dream cast</h2><p class="muted bp-intro">Every character, with the star most fans picked. Tap one to see every collage, or cast them yourself.</p></div>
+              <anvil-component type="Button" name="suggest_button" prop:text="A character is missing" prop:role='["btn", "btn-sm", "ic-plus"]'></anvil-component>
+            </div>
+            <div class="bp-chars"><anvil-component type="RepeatingPanel" name="chars_panel" prop:item_template="PerfectCast.Items.CharCard" prop:role='["contents"]'></anvil-component></div>
+          </section>
+          <section class="pc-section" anvil:dom-node="recent" hidden>
+            <div class="pc-section-head"><h2>Latest collages</h2></div>
+            <div class="pc-casts"><anvil-component type="RepeatingPanel" name="recent_panel" prop:item_template="PerfectCast.Items.CastCard" prop:role='["contents"]'></anvil-component></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </anvil-block>
+</anvil-form>

@@ -1,0 +1,43 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="pc-page">
+      <div class="ui-wrap" anvil:dom-node="missing" hidden>
+        <div class="ui-empty"><i class="ic ic-info"></i><h2>This page didn't load</h2><p anvil:dom-node="missing_text"></p>
+          <a class="ui-btn" href="#books"><i class="ic ic-book"></i>Back to the books</a></div>
+      </div>
+      <div class="ui-wrap" anvil:dom-node="main">
+        <div class="cs-grid">
+          <div class="cs-art"><anvil-component type="PerfectCast.Components.Collage" name="collage" prop:big="true"></anvil-component></div>
+          <div>
+            <div class="cs-hidden" anvil:dom-node="hidden_note" hidden><i class="ic ic-info"></i> A moderator hid this collage. Only you and the admins can see it.</div>
+            <div class="cs-title"><a class="for" anvil:dom-node="for_link" href="#books"></a><h1 anvil:dom-node="name"></h1></div>
+            <div class="cs-who"><span class="ui-avatar grad" anvil:dom-node="avatar" aria-hidden="true"></span><div>Cast by <a anvil:dom-node="user_link" href="#books"></a><div class="small muted" anvil:dom-node="ago"></div></div></div>
+            <p class="cs-cap" anvil:dom-node="caption"></p>
+            <div class="cs-actions">
+              <anvil-component type="PerfectCast.Components.Heart" name="heart" prop:big="true"></anvil-component>
+              <anvil-component type="Button" name="save_button" prop:text="Save image" prop:role='["btn", "ic-download"]'></anvil-component>
+              <anvil-component type="Button" name="share_button" prop:text="Share" prop:role='["btn", "ic-share"]'></anvil-component>
+              <a class="ui-btn" anvil:dom-node="edit_link" href="#books" hidden><i class="ic ic-edit"></i>Edit</a>
+              <anvil-component type="Button" name="delete_button" prop:text="Delete" prop:role='["btn", "btn-danger", "ic-trash"]'></anvil-component>
+              <anvil-component type="Button" name="report_button" prop:text="Report" prop:role='["btn", "btn-ghost", "ic-flag"]'></anvil-component>
+            </div>
+            <h3>The stars</h3>
+            <div class="cs-stars"><anvil-component type="RepeatingPanel" name="stars_panel" prop:item_template="PerfectCast.Items.StarLine" prop:role='["contents"]'></anvil-component></div>
+            <h3>Comments <span class="muted small" anvil:dom-node="ccount"></span></h3>
+            <div class="cs-comments"><anvil-component type="RepeatingPanel" name="comments_panel" prop:item_template="PerfectCast.Items.Comment" prop:role='["contents"]'></anvil-component></div>
+            <p class="muted" anvil:dom-node="no_comments" hidden>No comments yet. Say something nice!</p>
+            <div class="cs-add" anvil:name="add_part">
+              <anvil-component type="TextArea" name="comment_box" prop:placeholder="Say something about this collage"></anvil-component>
+              <anvil-component type="Button" name="post_button" prop:text="Post" prop:role='["btn", "btn-primary", "ic-arrow"]'></anvil-component>
+            </div>
+            <p class="cs-join" anvil:dom-node="join" hidden><a href="#auth/signup">Sign up</a> to join the conversation.</p>
+          </div>
+        </div>
+        <section class="pc-section" anvil:dom-node="more" hidden>
+          <div class="pc-section-head"><h2 anvil:dom-node="more_title"></h2><a anvil:dom-node="more_link" href="#books">See all <i class="ic ic-arrow"></i></a></div>
+          <div class="pc-casts"><anvil-component type="RepeatingPanel" name="more_panel" prop:item_template="PerfectCast.Items.CastCard" prop:role='["contents"]'></anvil-component></div>
+        </section>
+      </div>
+    </div>
+  </anvil-block>
+</anvil-form>

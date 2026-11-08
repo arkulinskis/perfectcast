@@ -1,0 +1,14 @@
+<div class="pc-item-host"><div class="ui-item ad-q-item">
+  <anvil-component type="PerfectCast.Components.Cover" name="cover"></anvil-component>
+  <div class="grow">
+    <h3><span anvil:dom-node="title"></span> <span class="muted small" anvil:dom-node="author"></span></h3>
+    <p class="small muted" anvil:dom-node="meta"></p>
+    <p anvil:dom-node="blurb"></p>
+    <p class="small"><b>Characters:</b> <span anvil:dom-node="chars"></span></p>
+    <div class="ui-row ad-q-actions">
+      <anvil-component type="Button" name="approve_button" prop:text="Approve" prop:role='["btn", "btn-sm", "btn-primary", "ic-check"]'></anvil-component>
+      <anvil-component type="Button" name="edit_button" prop:text="Edit first" prop:role='["btn", "btn-sm", "ic-edit"]'></anvil-component>
+      <anvil-component type="Button" name="reject_button" prop:text="Turn down" prop:role='["btn", "btn-sm", "btn-danger"]'></anvil-component>
+    </div>
+  </div>
+</div></div>

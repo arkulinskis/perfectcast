@@ -1,0 +1,18 @@
+---
+custom_component: true
+properties:
+  - name: cast
+    type: object
+    default_binding_prop: true
+    description: "A collage from the server: picks [{name, photo}], layout, tone"
+  - name: big
+    type: boolean
+    default_value: false
+    description: Full-size photos (the collage page and the editor's preview)
+toolbox_item:
+  title: Collage
+  group: PerfectCast
+help_text: |
+  A fan's celebrity collage in one of 4 layouts and 4 tones, drawn by PC.collage in theme/assets/pc.js.
+---
+<div class="pc-collage-host"><div class="pc-collage" anvil:dom-node="box"></div></div>

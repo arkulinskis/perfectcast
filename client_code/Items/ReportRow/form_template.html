@@ -1,0 +1,18 @@
+<div class="pc-item-host"><div class="ui-item ad-rep-item">
+  <div class="meta"><span class="ui-badge bad" anvil:dom-node="reason"></span><b anvil:dom-node="by"></b><span anvil:dom-node="when"></span><span class="ui-badge good" anvil:dom-node="done" hidden>done</span></div>
+  <p class="msg" anvil:dom-node="note"></p>
+  <div class="quote" anvil:dom-node="quote"><b anvil:dom-node="quote_by"></b> <span anvil:dom-node="quote_head"></span><br><span anvil:dom-node="quote_body"></span></div>
+  <div class="prev" anvil:name="prev">
+    <a anvil:dom-node="cast_link" href="#books"><anvil-component type="PerfectCast.Components.Collage" name="collage"></anvil-component></a>
+    <div class="small"><b anvil:dom-node="cast_by"></b><span anvil:dom-node="cast_for"></span> <span class="ui-badge bad" anvil:dom-node="cast_hidden" hidden>hidden</span>
+      <p class="muted" anvil:dom-node="cast_cap"></p>
+      <anvil-component type="Button" name="unhide_button" prop:text="Unhide collage" prop:role='["btn", "btn-sm"]'></anvil-component>
+    </div>
+  </div>
+  <p class="muted small" anvil:dom-node="gone" hidden>The collage is gone.</p>
+  <div class="ui-row" anvil:name="actions">
+    <anvil-component type="Button" name="dismiss_button" prop:text="Nothing wrong" prop:role='["btn", "btn-sm"]'></anvil-component>
+    <anvil-component type="Button" name="hide_button" prop:text="Hide it" prop:role='["btn", "btn-sm", "ic-lock"]'></anvil-component>
+    <anvil-component type="Button" name="delete_button" prop:text="Delete it" prop:role='["btn", "btn-sm", "btn-danger", "ic-trash"]'></anvil-component>
+  </div>
+</div></div>

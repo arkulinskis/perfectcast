@@ -1,0 +1,22 @@
+---
+custom_component: true
+properties:
+  - name: book
+    type: object
+    default_binding_prop: true
+    description: "A book (title, cover photo key)"
+  - name: badge
+    type: string
+    default_value: ""
+    description: A small corner badge (New, Soon)
+  - name: full
+    type: boolean
+    default_value: false
+    description: The full-size picture instead of the thumbnail
+toolbox_item:
+  title: Book cover
+  group: PerfectCast
+help_text: |
+  A book cover (2:3) with the stored picture, or the title on the gradient when there is none.
+---
+<div class="pc-cover-host"><div class="pc-cover" anvil:dom-node="box"><span class="pc-badge-new" anvil:dom-node="badge" hidden></span><img anvil:dom-node="img" alt="" loading="lazy" hidden><div class="ph" anvil:dom-node="ph"></div></div></div>

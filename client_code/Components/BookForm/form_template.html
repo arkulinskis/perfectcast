@@ -1,0 +1,34 @@
+---
+custom_component: true
+properties: []
+toolbox_item:
+  title: Book form
+  group: PerfectCast
+help_text: |
+  A book with its characters (Suggest a book, and the admin's Books tab). Call setup(book, tropes, admin) and values().
+---
+<div class="bf-host"><div class="bf">
+  <div class="bf-cover">
+    <anvil-component type="PerfectCast.Components.Cover" name="cover"></anvil-component>
+    <div><b>Cover</b><p class="small muted bf-cover-note">Optional. Framed to 2:3 and shrunk to 600×900.</p>
+      <div class="ui-row"><label class="ui-btn sm bf-upload"><i class="ic ic-upload"></i>Upload a cover<input type="file" accept="image/jpeg,image/png,image/webp,image/*" anvil:dom-node="file"></label>
+        <anvil-component type="Button" name="cover_remove_button" prop:text="Remove" prop:role='["btn", "btn-ghost", "btn-sm"]'></anvil-component></div></div>
+  </div>
+  <div class="bf-two">
+    <label class="ui-field"><span>Title</span><anvil-component type="TextBox" name="title_box"></anvil-component></label>
+    <label class="ui-field"><span>Author</span><anvil-component type="TextBox" name="author_box"></anvil-component></label>
+  </div>
+  <div class="bf-three">
+    <label class="ui-field"><span>Series <em>(optional)</em></span><anvil-component type="TextBox" name="series_box"></anvil-component></label>
+    <label class="ui-field"><span>Book #</span><anvil-component type="TextBox" name="series_no_box" prop:type="number"></anvil-component></label>
+    <label class="ui-field"><span>Release date</span><anvil-component type="DatePicker" name="release_box" prop:format="D MMM YYYY"></anvil-component></label>
+  </div>
+  <div class="ui-field"><span>Spice</span><div class="bf-spice" role="group" aria-label="Spice"><button type="button" class="bf-sp zero" anvil:name="sp0" data-v="0" anvil:on-dom:click="self.spice_click">Sweet</button><button type="button" class="bf-sp" anvil:name="sp1" data-v="1" aria-label="Spice 1 of 5" anvil:on-dom:click="self.spice_click"><i class="ic ic-flame"></i></button><button type="button" class="bf-sp" anvil:name="sp2" data-v="2" aria-label="Spice 2 of 5" anvil:on-dom:click="self.spice_click"><i class="ic ic-flame"></i></button><button type="button" class="bf-sp" anvil:name="sp3" data-v="3" aria-label="Spice 3 of 5" anvil:on-dom:click="self.spice_click"><i class="ic ic-flame"></i></button><button type="button" class="bf-sp" anvil:name="sp4" data-v="4" aria-label="Spice 4 of 5" anvil:on-dom:click="self.spice_click"><i class="ic ic-flame"></i></button><button type="button" class="bf-sp" anvil:name="sp5" data-v="5" aria-label="Spice 5 of 5" anvil:on-dom:click="self.spice_click"><i class="ic ic-flame"></i></button></div></div>
+  <div class="ui-field"><span>Tropes <em>(up to 6)</em></span><div class="pc-chips"><anvil-component type="RepeatingPanel" name="tropes_panel" prop:item_template="PerfectCast.Items.Chip" prop:role='["contents"]'></anvil-component></div></div>
+  <label class="ui-field"><span>Blurb <em>(no spoilers)</em></span><anvil-component type="TextArea" name="blurb_box" prop:height="110"></anvil-component></label>
+  <label class="ui-field" anvil:name="status_field"><span>Status</span><anvil-component type="DropDown" name="status_box"></anvil-component></label>
+  <div class="ui-field"><span>Characters</span>
+    <div class="bf-chars"><anvil-component type="RepeatingPanel" name="chars_panel" prop:item_template="PerfectCast.Items.CharRow" prop:role='["contents"]'></anvil-component></div>
+    <anvil-component type="Button" name="add_char_button" prop:text="Add a character" prop:role='["btn", "btn-sm", "ic-plus", "bf-add"]'></anvil-component>
+  </div>
+</div></div>

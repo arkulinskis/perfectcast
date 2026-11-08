@@ -1,0 +1,24 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="pc-page">
+      <div class="ui-wrap" anvil:dom-node="missing" hidden>
+        <div class="ui-empty"><i class="ic ic-info"></i><h2>This page didn't load</h2><p anvil:dom-node="missing_text"></p>
+          <a class="ui-btn" href="#books"><i class="ic ic-book"></i>Back to the books</a></div>
+      </div>
+      <div class="ui-wrap" anvil:dom-node="main">
+        <div class="fn-head">
+          <span class="ui-avatar grad" anvil:dom-node="avatar" aria-hidden="true"></span>
+          <div>
+            <h1 anvil:dom-node="name"></h1>
+            <p class="bio" anvil:dom-node="bio"></p>
+            <p class="muted" anvil:dom-node="add_bio" hidden>Add a bio on <a href="#mine">My casts</a>.</p>
+            <div class="nums"><span><b anvil:dom-node="n_casts"></b></span><span><b anvil:dom-node="n_hearts"></b></span><span><b anvil:dom-node="n_books"></b></span><span anvil:dom-node="since"></span></div>
+            <div class="pc-chips fn-stars"><anvil-component type="RepeatingPanel" name="stars_panel" prop:item_template="PerfectCast.Items.LinkChip" prop:role='["contents"]'></anvil-component></div>
+          </div>
+        </div>
+        <div class="pc-casts"><anvil-component type="RepeatingPanel" name="casts_panel" prop:item_template="PerfectCast.Items.CastCard" prop:role='["contents"]'></anvil-component></div>
+        <div class="ui-empty" anvil:name="no_casts"><i class="ic ic-sparkle"></i><h3>No collages yet</h3><p anvil:dom-node="empty_line"></p></div>
+      </div>
+    </div>
+  </anvil-block>
+</anvil-form>

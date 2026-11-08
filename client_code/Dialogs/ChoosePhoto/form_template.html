@@ -1,0 +1,13 @@
+<div class="ui dlg-host">
+  <h2 class="dlg-h" anvil:dom-node="title">Choose a photo</h2>
+  <label class="pc-upload-zone"><i class="ic ic-upload"></i><b>Upload a new photo</b><span class="small muted">JPEG, PNG or WebP. You'll frame it next; we keep a small copy.</span><input type="file" accept="image/jpeg,image/png,image/webp,image/*" anvil:dom-node="file"></label>
+  <div anvil:name="drawer_part">
+    <h3 class="pc-drawer-h">Or reuse one from your drawer <span class="muted small" anvil:dom-node="count"></span></h3>
+    <div class="pc-drawer-grid">
+      <anvil-component type="RepeatingPanel" name="photos_panel" prop:item_template="PerfectCast.Items.DrawerPick" prop:role='["contents"]'></anvil-component>
+    </div>
+  </div>
+  <div class="ui-row end">
+    <anvil-component type="Button" name="cancel_button" prop:text="Cancel" prop:role='["btn", "btn-ghost"]'></anvil-component>
+  </div>
+</div>
