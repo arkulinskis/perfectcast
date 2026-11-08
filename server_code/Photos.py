@@ -126,7 +126,7 @@ def delete_photo(key):
     p = mine(me, key)
     if p is None:
         return C.ok(quota=quota(me))
-    if app_tables.books.search(cover=p):
+    if len(app_tables.books.search(cover=p)):
         return C.fail("This picture is a book's cover. Ask an admin to change the cover first.")
     for pk in app_tables.picks.search(photo=p):
         pk["photo"] = None
