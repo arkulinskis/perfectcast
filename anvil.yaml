@@ -597,10 +597,9 @@ db_schema:
     server: full
     title: Users
 metadata:
-  description: 'Fan-cast the newest romantasy books: every character, your dream celebrity collage, and what the whole fandom
-    picks. Swoon over and comment on other readers'' casts.'
-  logo_img: asset:icon-512.png
-  title: 'PerfectCast: fan-cast every new romantasy book'
+  description: "Fan-cast the newest romantasy books: every character, your dream celebrity collage, and what the whole fandom picks. Swoon over and comment on other readers' casts."
+  logo_img: "asset:icon-512.png"
+  title: "PerfectCast: fan-cast every new romantasy book"
 name: PerfectCast
 native_deps:
   head_html: |
@@ -624,7 +623,7 @@ native_deps:
     <meta name="twitter:description" content="Fan-cast the newest romantasy books: every character, your dream celebrity collage, and what the whole fandom picks. Swoon over and comment on other readers&#x27; casts.">
     <meta name="twitter:image" content="https://perfectcast.anvil.app/_/theme/og-image.png">
     <link rel="alternate" type="text/plain" title="PerfectCast for AI assistants" href="https://perfectcast.anvil.app/llms.txt">
-    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://perfectcast.anvil.app/#app", "name": "PerfectCast", "url": "https://perfectcast.anvil.app/", "description": "Fan-cast the newest romantasy books: every character, your dream celebrity collage, and what the whole fandom picks. Swoon over and comment on other readers' casts.", "image": "https://perfectcast.anvil.app/_/theme/og-image.png", "inLanguage": "en", "publisher": {"@id": "https://arkvital.com/#org"}, "keywords": "romantasy fan cast, dream cast book characters, fan casting site, romantasy books 2026, book to movie casting, BookTok fan cast, romantasy new releases, celebrity collage maker, fantasy romance books", "applicationCategory": "EntertainmentApplication", "operatingSystem": "Any (web browser)", "browserRequirements": "Requires JavaScript and a modern web browser", "featureList": ["Every new romantasy book with tropes, spice level and characters", "Make a dream-cast collage and save it as an image for socials", "The fans' pick for every character, with vote shares", "Swoons, comments and fan pages", "A leaderboard of the most-cast celebrities"], "audience": {"@type": "Audience", "audienceType": "Romantasy readers and BookTok fans"}}, {"@type": "WebSite", "@id": "https://perfectcast.anvil.app/#site", "url": "https://perfectcast.anvil.app/", "name": "PerfectCast", "publisher": {"@id": "https://arkvital.com/#org"}}, {"@type": "Organization", "@id": "https://arkvital.com/#org", "name": "Arkvital", "url": "https://arkvital.com", "email": "arkvital@outlook.com", "address": {"@type": "PostalAddress", "addressLocality": "Montreal", "addressRegion": "QC", "addressCountry": "CA"}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Service", "@id": "https://perfectcast.anvil.app/#app", "name": "PerfectCast", "url": "https://perfectcast.anvil.app/", "description": "Fan-cast the newest romantasy books: every character, your dream celebrity collage, and what the whole fandom picks. Swoon over and comment on other readers' casts.", "image": "https://perfectcast.anvil.app/_/theme/og-image.png", "serviceType": "Fan-cast the newest romantasy: dream casts, collages, the fans' pick", "provider": {"@id": "https://arkvital.com/#org"}, "areaServed": "Worldwide", "availableChannel": {"@type": "ServiceChannel", "serviceUrl": "https://perfectcast.anvil.app/", "name": "Web browser"}, "availableLanguage": "en", "audience": {"@type": "Audience", "audienceType": "Romantasy readers and BookTok fans"}}, {"@type": "WebSite", "@id": "https://perfectcast.anvil.app/#site", "url": "https://perfectcast.anvil.app/", "name": "PerfectCast", "publisher": {"@id": "https://arkvital.com/#org"}}, {"@type": "Organization", "@id": "https://arkvital.com/#org", "name": "Arkvital", "url": "https://arkvital.com", "email": "arkvital@outlook.com", "address": {"@type": "PostalAddress", "addressLocality": "Montreal", "addressRegion": "QC", "addressCountry": "CA"}}]}</script>
     <!-- seo:end -->
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#7a1652">
