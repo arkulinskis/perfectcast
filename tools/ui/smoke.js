@@ -83,10 +83,10 @@
     // ---- the admin (ADMIN_EMAILS address; made on the first run in this local database)
     const pw = 'Pc-local-admin-Kq7-2026';
     await visit('#auth');
-    let i = inputs(); type(i[0], 'arkulinskis@gmail.com'); type(i[1], pw);
+    let i = inputs(); type(i[0], 'admin@example.com'); type(i[1], pw);
     button('.au-card .anvil-role-btn-block', /^Sign in$/).click();
     await sleep(3500);
-    if (location.hash !== '#books') await signUp('Local Admin', 'arkulinskis@gmail.com', pw);
+    if (location.hash !== '#books') await signUp('Local Admin', 'admin@example.com', pw);
     await until(() => location.hash === '#books' && window.UI_READY, 'signed in as admin', 60000);
     for (const h of ['#admin', '#admin/books', '#admin/queue', '#admin/reports', '#admin/feedback', '#admin/users', '#admin/demo', book]) await visit(h);
     await visit('#admin/books');
