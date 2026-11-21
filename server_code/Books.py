@@ -130,6 +130,7 @@ def _admin_book(b):
     chars = sorted(app_tables.characters.search(book=b), key=lambda ch: (ch["position"] or 0, ch["name"]))
     return dict(Shelf.book_full(b, len(app_tables.castings.search(book=b))), created=C.iso(b["created"]),
                 characters=[dict(Shelf.char_ref(ch), blurb=ch["blurb"] or "", status=ch["status"] or "live",
+                                 official_star=C.col(ch, "official_star", ""), official_source=C.col(ch, "official_source", ""),
                                  casts=len(app_tables.castings.search(character=ch))) for ch in chars])
 
 
@@ -179,6 +180,10 @@ def admin_save_book(key, data):
         else:
             ch = app_tables.characters.add_row(key=C.token(10), book=b, position=i, status="live", submitted_by=me,
                                                created=C.now(), is_demo=False, **c)
+        if "official_star" in raw:  # the studio's casting (admins only; guarded until the schema is accepted)
+            source = C.text(raw.get("official_source"), 300)
+            C.put(ch, official_star=C.text(raw.get("official_star"), 80),
+                  official_source=source if source.startswith("https://") else "")
         keep.add(ch.get_id())
     for ch in app_tables.characters.search(book=b):
         if ch.get_id() not in keep:

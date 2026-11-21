@@ -32,8 +32,15 @@
         <div class="pc-casts"><anvil-component type="RepeatingPanel" name="trend_panel" prop:item_template="PerfectCast.Items.CastCard" prop:role='["contents"]'></anvil-component></div>
       </section>
 
-      <section class="pc-section">
-        <div class="pc-section-head"><h2>Every book</h2><span class="muted small" anvil:dom-node="count"></span></div>
+      <a class="du-band" href="#duel">
+        <span class="du-band-ic" aria-hidden="true"><i class="ic ic-crown"></i></span>
+        <span><b>Swoon-off</b><span class="muted"> Two fan collages, one character. Pick your favourite in one tap.</span></span>
+        <i class="ic ic-arrow" aria-hidden="true"></i>
+      </a>
+
+      <section class="pc-section" anvil:dom-node="shelf">
+        <div class="pc-section-head"><h2>Every book</h2><span class="ui-row"><span class="muted small" anvil:dom-node="count"></span>
+          <anvil-component type="Button" name="share_list_button" prop:text="Share this list" prop:role='["btn", "btn-sm", "ic-share"]'></anvil-component></span></div>
         <div class="bk-filters">
           <div class="row">
             <anvil-component type="TextBox" name="search_box" prop:placeholder="Search a title, author or series" prop:role='["bk-search"]'></anvil-component>

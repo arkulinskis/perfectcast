@@ -3,5 +3,9 @@
   <anvil-component type="DropDown" name="role_box"></anvil-component>
   <anvil-component type="Button" name="remove_button" prop:text="Remove character" prop:tooltip="Remove" prop:role='["btn", "btn-ghost", "btn-icon", "ic-x"]'></anvil-component>
   <anvil-component type="TextArea" name="blurb_box" prop:placeholder="Who are they? One line, no spoilers (optional)" prop:role='["bf-blurb"]'></anvil-component>
+  <div class="bf-studio" anvil:dom-node="studio" hidden>
+    <label class="ui-field"><span>Studio cast <em>(when a film or series is announced)</em></span><anvil-component type="TextBox" name="studio_box" prop:placeholder="Actor's name"></anvil-component></label>
+    <label class="ui-field"><span>Source link <em>(optional, https)</em></span><anvil-component type="TextBox" name="source_box" prop:placeholder="https://..."></anvil-component></label>
+  </div>
   <span class="pend ui-badge warn" anvil:dom-node="pending" hidden>Suggested by a member: saving publishes it</span>
 </div></div>

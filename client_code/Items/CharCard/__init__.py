@@ -28,6 +28,12 @@ class CharCard(CharCardTemplate):
             n["pick_pct"].textContent = " · %d%%" % top["pct"]
         else:
             n["pick_pre"].textContent = "Nobody has cast them yet"
+        off = c.get("official")
+        pc.show(n["studio"], bool(off))
+        if off:
+            n["studio_name"].textContent = off["name"]
+            n["studio_tag"].textContent = (" · the fans agree" if off.get("agree") else
+                                           " · fans' #%d" % off["rank"] if off.get("rank") else " · not a fan pick") if top else ""
         n["blurb"].textContent = c.get("blurb") or ""
         pc.show(n["blurb"], bool(c.get("blurb")))
         runners = [{"href": router.href("stars", s["star"]), "label": "%s · %d%%" % (s["name"], s["pct"]), "cls": ""}

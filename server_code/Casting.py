@@ -31,7 +31,8 @@ def _character(key):
 def comment_dict(x, me, casting_owner=None):
     mine = me is not None and x["user"] == me
     return {"id": x.get_id(), "body": x["body"], "created": C.iso(x["created"]), "user": C.user_ref(x["user"]),
-            "mine": mine, "can_delete": mine or C.is_admin(me) or (me is not None and casting_owner == me)}
+            "mine": mine, "can_delete": mine or C.is_admin(me) or (me is not None and casting_owner == me),
+            "spoiler": bool(C.col(x, "spoiler", False))}
 
 
 def delete_casting_row(c):
@@ -43,6 +44,11 @@ def delete_casting_row(c):
     for t in (app_tables.picks, app_tables.hearts, app_tables.reports):
         for r in t.search(casting=c):
             r.delete()
+    duels = C.opt_table("duels")
+    if duels is not None:
+        for side in ("winner", "loser"):
+            for r in duels.search(**{side: c}):
+                r.delete()
     c.delete()
 
 
@@ -188,7 +194,7 @@ def toggle_heart(key):
 
 
 @anvil.server.callable(require_user=True)
-def add_comment(key, body):
+def add_comment(key, body, spoiler=False):
     me = C.require_user()
     c = _casting(key)
     if not Shelf.visible(c):
@@ -199,6 +205,8 @@ def add_comment(key, body):
     if C.rate_limited("comment", 20, 3600):
         return C.fail("You're on fire! Please wait a bit before commenting again.")
     x = app_tables.comments.add_row(casting=c, user=me, body=body, created=C.now(), hidden=False, is_demo=False)
+    if spoiler:
+        C.put(x, spoiler=True)  # blurred until a reader taps it (guarded until the schema is accepted)
     return C.ok(comment=comment_dict(x, me, c["user"]))
 
 

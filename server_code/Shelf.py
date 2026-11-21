@@ -111,6 +111,23 @@ def consensus(ch, castings=None):
     return out
 
 
+def official_of(ch, cons=None):
+    """The studio's casting for a character (an admin types it in when a film/series is announced), compared with
+    the fans' pick: {name, star, source, agree, rank, pct} or None. Text only, no photo."""
+    name = C.text(C.col(ch, "official_star", ""), 80)
+    if not name:
+        return None
+    star = C.star_key(name)
+    source = C.text(C.col(ch, "official_source", ""), 300)
+    out = {"name": name, "star": star, "source": source if source.startswith("https://") else "", "agree": False,
+           "rank": None, "pct": 0}
+    for i, s in enumerate(cons if cons is not None else consensus(ch)):
+        if s["star"] == star:
+            out.update(rank=i + 1, pct=s["pct"], agree=i == 0)
+            break
+    return out
+
+
 def can_see_book(b, me):
     if b is None:
         return False
@@ -164,8 +181,9 @@ def get_book(key):
     chars = []
     for ch in live_characters(b):
         mine = [c for c in castings if c["character"] == ch]
-        top = consensus(ch, mine)[:3]
-        chars.append(dict(char_ref(ch), blurb=ch["blurb"] or "", casts=len(mine), top=top))
+        cons = consensus(ch, mine)
+        top = cons[:3]
+        chars.append(dict(char_ref(ch), blurb=ch["blurb"] or "", casts=len(mine), top=top, official=official_of(ch, cons)))
     recent = sorted(castings, key=lambda c: c["updated"] or c["created"], reverse=True)[:6]
     return C.ok(book=book_full(b, len(castings)), characters=chars, recent=[casting_card(c, me, hearted) for c in recent],
                 my=my, fans=len({c["user"].get_id() for c in castings if c["user"] is not None}),
@@ -190,8 +208,9 @@ def get_character(key, sort="loved"):
         top = consensus(other)[:1]
         siblings.append(dict(char_ref(other), photo=top[0]["photo"] if top else None, star=top[0]["name"] if top else None,
                              current=other == ch))
+    cons = consensus(ch, castings)
     return C.ok(character=dict(char_ref(ch), blurb=ch["blurb"] or ""), book=book_card(ch["book"], 0),
-                consensus=consensus(ch, castings)[:8], castings=[casting_card(c, me, hearted) for c in castings[:60]],
+                consensus=cons[:8], official=official_of(ch, cons), duel_ready=len(castings) >= 2, castings=[casting_card(c, me, hearted) for c in castings[:60]],
                 total=len(castings), mine=mine["key"] if mine is not None else None, siblings=siblings)
 
 

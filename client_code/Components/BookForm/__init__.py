@@ -32,10 +32,10 @@ class BookForm(BookFormTemplate):
         self.tropes = list(tropes or [])
         self.chosen = list(b.get("tropes") or [])
         self.cover_key = b.get("cover")
-        self.chars = [{"key": c.get("key"), "name": c["name"], "role": c.get("role"), "blurb": c.get("blurb") or "",
-                       "status": c.get("status")} for c in b.get("characters") or []]
+        self.admin = bool(admin)
+        self.chars = [self._char(c) for c in b.get("characters") or []]
         if not self.chars:
-            self.chars = [{"name": "", "role": "heroine", "blurb": ""}, {"name": "", "role": "love", "blurb": ""}]
+            self.chars = [self._char({"name": "", "role": "heroine"}), self._char({"name": "", "role": "love"})]
         self.title_box.text = b.get("title") or ""
         self.author_box.text = b.get("author") or ""
         self.series_box.text = b.get("series") or ""
@@ -50,6 +50,14 @@ class BookForm(BookFormTemplate):
         self._draw_spice()
         self._draw_tropes()
         self.chars_panel.items = self.chars
+
+    def _char(self, c):
+        """A row for the character list. Admins also get the studio's casting (official_star / official_source)."""
+        row = {"key": c.get("key"), "name": c.get("name") or "", "role": c.get("role"), "blurb": c.get("blurb") or "",
+               "status": c.get("status")}
+        if getattr(self, "admin", False):
+            row.update(_admin=True, official_star=c.get("official_star") or "", official_source=c.get("official_source") or "")
+        return row
 
     def _draw_cover(self):
         self.cover.book = {"title": (self.title_box.text or "Cover"), "cover": self.cover_key}
@@ -87,7 +95,7 @@ class BookForm(BookFormTemplate):
 
     @handle("add_char_button", "click")
     def add_char_button_click(self, **event_args):
-        self.chars.append({"name": "", "role": "side", "blurb": ""})
+        self.chars.append(self._char({"name": "", "role": "side"}))
         self.chars_panel.items = self.chars
 
     @handle("cover_remove_button", "click")
@@ -123,4 +131,4 @@ class BookForm(BookFormTemplate):
         return {"title": title, "author": author, "series": (self.series_box.text or "").strip(),
                 "series_no": (self.series_no_box.text or "").strip(), "release": rel.isoformat() if rel else "",
                 "blurb": self.blurb_box.text or "", "spice": self.spice, "tropes": list(self.chosen), "cover": self.cover_key,
-                "status": self.status_box.selected_value, "characters": [dict(c, name=c["name"].strip()) for c in chars]}
+                "status": self.status_box.selected_value, "characters": [{k: v for k, v in dict(c, name=c["name"].strip()).items() if k != "_admin"} for c in chars]}

@@ -1292,3 +1292,77 @@ anvil-dropzone { display: contents; }
 .anvil-notification, [data-notify="container"] { transition-property: opacity, transform !important; }
 .au-card a { display: inline-block; padding: 3px 0; }  /* 24px+ touch height */
 .anvil-notification .anvil-close, [data-notify="dismiss"] { min-width: 24px; min-height: 24px; }
+
+/* ===== 2026-11-20: swoon-off, studio cast vs fans, spoiler-safe comments, trope links ===== */
+a.pc-chip { text-decoration: none; }
+.du-band { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; margin: 8px 0 28px; padding: 14px 18px;
+  border-radius: var(--radius); background: var(--grad-soft); border: 1px solid var(--c-line); color: var(--c-ink); text-decoration: none;
+  transition: border-color var(--dur-fast) var(--ease-out), transform var(--dur-press) var(--ease-out); }
+.du-band:hover { border-color: var(--c-brand); }
+.du-band:active { transform: scale(.99); }
+.du-band-ic { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--grad); color: #fff; }
+.du-band b { font-family: var(--font-display); font-size: 1.3rem; margin-right: 6px; }
+
+.du-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.du-head h1 { margin: 0; }
+.du-head h1 .ic { width: 26px; height: 26px; color: var(--c-brand); vertical-align: -2px; }
+.du-head p { margin: 4px 0 0; }
+.du-head .du-count { color: var(--c-muted); margin: 0; }
+.du-for { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 16px; margin-bottom: 16px;
+  border-radius: var(--radius-sm); background: var(--c-surface); border: 1px solid var(--c-line); }
+.du-for p { margin: 0; font-size: 1.05rem; }
+.du-for p > a { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; }
+.du-arena { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 18px; align-items: start;
+  transition: opacity var(--dur-base) var(--ease-out); }
+.du-arena.busy { opacity: .45; pointer-events: none; }
+.du-side { display: grid; gap: 10px; padding: 12px; border-radius: var(--radius); background: var(--c-surface); border: 1px solid var(--c-line);
+  box-shadow: var(--shadow); transition: opacity var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.du-art { position: relative; cursor: pointer; border-radius: 14px; overflow: hidden; transition: transform var(--dur-press) var(--ease-out); }
+.du-art:active { transform: scale(.985); }
+@media (hover: hover) { .du-side:not(.won):not(.lost) .du-art:hover { transform: translateY(-2px); } }
+.du-crown { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--grad); color: #fff; box-shadow: var(--glow); opacity: 0; transform: scale(.6);
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-slow) var(--ease-expo); }
+.du-side.won { border-color: var(--c-brand); box-shadow: var(--glow); }
+.du-side.won .du-crown { opacity: 1; transform: scale(1); }
+.du-side.lost { opacity: .72; }
+.du-side.won .du-art, .du-side.lost .du-art { cursor: default; }
+.du-meta p { margin: 0; }
+.du-meta .du-by { font-size: .9rem; color: var(--c-muted); }
+.du-by a { font-weight: 700; }
+.du-meta .du-cap { margin-top: 4px; font-style: italic; overflow-wrap: anywhere; }
+.du-res { display: grid; gap: 6px; margin-top: 8px; }
+.du-bar { height: 10px; border-radius: 999px; background: var(--c-surface-2); overflow: hidden; }
+.du-bar span { display: block; height: 100%; width: 0; background: var(--grad); border-radius: inherit; transition: width var(--dur-hero) var(--ease-expo); }
+.du-vs { align-self: center; font: italic 700 1.8rem/1 var(--font-display); color: var(--c-brand); }
+.du-after { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin: 22px 0 8px; }
+.du-after .du-nudge { flex-basis: 100%; text-align: center; margin: 0; color: var(--c-muted); }
+.du-status { text-align: center; padding: 40px 0; }
+@media (max-width: 700px) {
+  .du-arena { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .du-vs { justify-self: center; font-size: 1.4rem; }
+}
+
+.cp-studio { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 14px 18px; margin: 14px 0;
+  border-radius: var(--radius); background: var(--c-surface); border: 1px solid var(--c-line); }
+.cp-studio > .ic { width: 26px; height: 26px; color: var(--c-violet); }
+.cp-studio .cp-studio-line { margin: 0; }
+.cp-studio-line b { font-family: var(--font-display); font-size: 1.2rem; }
+@media (max-width: 560px) {
+  .cp-studio { grid-template-columns: auto minmax(0, 1fr); }
+  .cp-studio .ui-badge { grid-column: 1 / -1; justify-self: start; }
+}
+.bp-char .bp-studio { margin: 0 0 6px; color: var(--c-muted); }
+.bp-studio .ic { width: 15px; height: 15px; }
+.bp-studio b { color: var(--c-ink); }
+.bf-studio { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+@media (max-width: 560px) { .bf-studio { grid-template-columns: minmax(0, 1fr); } }
+
+.cs-spoiler { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; padding: 7px 12px; border-radius: 999px; border: 1px dashed var(--c-warn);
+  background: var(--c-warn-soft); color: var(--c-warn); font: 600 .85rem/1.2 var(--font-body); cursor: pointer;
+  transition: border-style var(--dur-fast) var(--ease-out), transform var(--dur-press) var(--ease-out); }
+.cs-spoiler:hover { border-style: solid; }
+.cs-spoiler:active { transform: scale(.97); }
+.cs-spoiler .ic { width: 15px; height: 15px; }
+.cs-c .cs-spoil-tag { padding: 2px 8px; font-size: .75rem; }
+.cs-add .anvil-role-cs-spoil { grid-column: 1 / -1; }

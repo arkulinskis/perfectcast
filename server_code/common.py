@@ -77,6 +77,32 @@ def name_of(user):
     return user["display_name"] or (user["email"] or "Someone").split("@")[0].capitalize()
 
 
+def col(row, name, default=None):
+    """A column that may not exist yet (added 2026-11-20; the live app keeps working until the schema is accepted)."""
+    try:
+        v = row[name]
+    except Exception:
+        return default
+    return default if v is None else v
+
+
+def put(row, **values):
+    """Write optional columns in their own guarded statement; False if the schema doesn't have them yet."""
+    try:
+        row.update(**values)
+        return True
+    except Exception:
+        return False
+
+
+def opt_table(name):
+    """An app table that may not exist yet (new tables wait for the user's Schema Mismatch click), else None."""
+    try:
+        return getattr(app_tables, name)
+    except Exception:
+        return None
+
+
 def row_by_id(table, row_id):
     """get_by_id that returns None for a missing or malformed id (ids come from the browser)."""
     if not isinstance(row_id, str) or not row_id:

@@ -17,6 +17,14 @@
           <anvil-component type="Button" name="cast_button" prop:text="Cast" prop:role='["btn", "btn-primary", "btn-lg", "ic-sparkle"]'></anvil-component>
         </div>
         <nav class="pc-scroll cp-sibs" aria-label="Other characters" tabindex="0"><anvil-component type="RepeatingPanel" name="sibs_panel" prop:item_template="PerfectCast.Items.LinkChip" prop:role='["contents"]'></anvil-component></nav>
+        <section class="cp-studio" anvil:dom-node="studio" hidden aria-label="Studio cast and fans' pick">
+          <i class="ic ic-film" aria-hidden="true"></i>
+          <div>
+            <p class="cp-studio-line">Studio cast: <b anvil:dom-node="studio_name"></b> <a class="small" anvil:dom-node="studio_src" href="#books" target="_blank" rel="noopener" hidden>source <i class="ic ic-external"></i></a></p>
+            <p class="cp-studio-line">Fans' pick: <b anvil:dom-node="fans_name"></b></p>
+          </div>
+          <span class="ui-badge" anvil:dom-node="verdict"></span>
+        </section>
         <section class="cp-pick">
           <div>
             <h2 class="cp-pick-h">The fans' pick</h2>
@@ -32,6 +40,7 @@
         </section>
         <section class="pc-section">
           <div class="pc-section-head"><h2 anvil:dom-node="total"></h2>
+            <a class="ui-btn sm soft" anvil:dom-node="duel_link" href="#duel" hidden><i class="ic ic-crown"></i>Swoon-off</a>
             <div class="ui-seg" role="group" aria-label="Sort">
               <button type="button" anvil:name="sort_loved" data-sort="loved" anvil:on-dom:click="self.sort_click">Most swooned</button>
               <button type="button" anvil:name="sort_new" data-sort="new" anvil:on-dom:click="self.sort_click">Newest</button>

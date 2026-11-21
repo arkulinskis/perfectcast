@@ -52,7 +52,7 @@
   }
   try {
     // ---- visitors
-    for (const h of ['#landing', '#books', '#stars', '#auth', '#auth/signup', '#auth/reset']) await visit(h);
+    for (const h of ['#landing', '#books', '#stars', '#duel', '#books/Fae', '#books/all/hot', '#auth', '#auth/signup', '#auth/reset']) await visit(h);
     await visit('#books');
     const book = await href('.pc-books a.pc-book[href^="#book/"]', 'a book on the shelf');
     await visit(book);
@@ -72,7 +72,7 @@
     await signUp('Smoke Tester', 'smoke' + Date.now() + '@example.com', 'Pc-' + Math.random().toString(36).slice(2) + '-Kq7');
     await until(() => location.hash === '#mine' && window.UI_READY, 'signed up (back to #mine)', 60000);
     await sleep(500);
-    for (const h of ['#books', '#mine', '#photos', '#profile', '#suggest', '#landing', book, character, star, fan]) await visit(h);
+    for (const h of ['#books', '#mine', '#photos', '#profile', '#suggest', '#landing', '#duel', book, character, star, fan]) await visit(h);
     const edit = '#castedit/' + character.split('/')[1];
     await visit(edit);
     await dialog(() => $('.ce-slot .ph').click(), 'choose a photo');

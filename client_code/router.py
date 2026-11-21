@@ -21,6 +21,7 @@ PAGES = {
     "cast": (None, "Collage"),
     "castedit": ("user", "Cast a character"),
     "stars": (None, "Stars"),
+    "duel": (None, "Swoon-off"),
     "mine": ("user", "My casts"),
     "photos": ("user", "Your photo drawer"),
     "fan": (None, "Fan"),
@@ -66,6 +67,9 @@ def _form(name):
     if name == "stars":
         from .Pages.Stars import Stars
         return Stars
+    if name == "duel":
+        from .Pages.Duel import Duel
+        return Duel
     if name == "mine":
         from .Pages.Mine import Mine
         return Mine

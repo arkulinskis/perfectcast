@@ -1,10 +1,12 @@
 import anvil.server
 from anvil import *
+from anvil.js import window
 
 from ._anvil_designer import BooksTemplate
 from ... import pc, router, state
 
 SPICE = [("Any spice", ""), ("Sweet (0-1)", "mild"), ("Warm (2-3)", "warm"), ("Scorching (4-5)", "hot")]
+SPICE_WORDS = {"mild": "sweet", "warm": "warm", "hot": "scorching"}
 
 
 class Books(BooksTemplate):
@@ -22,7 +24,35 @@ class Books(BooksTemplate):
         state.set_control_attr(self.search_box, "type", "search")
         self.trope_panel.add_event_handler("x-chip", self._trope)
         self.d = anvil.server.call("get_shelf")
+        self._from_address(args)
         self._draw()
+        if args:  # opened from a trope link or a shared list: go straight to the shelf
+            window.setTimeout(lambda: self.dom_nodes["shelf"].scrollIntoView(pc.js({"block": "start"})), 80)
+
+    def _from_address(self, args):
+        """#books/<trope>/<spice>: a shareable filtered shelf ("all" = any trope)."""
+        tropes = {t.lower(): t for t in self.d.get("tropes") or []}
+        trope = tropes.get((args[0] if args else "").strip().lower(), "")
+        spice = args[1] if len(args) > 1 and args[1] in SPICE_WORDS else ""
+        self.f.update(trope=trope, spice=spice)
+        self.spice_box.selected_value = spice
+        if trope or spice:
+            self.title = self._list_name()
+
+    def _list_name(self):
+        parts = [SPICE_WORDS[self.f["spice"]]] if self.f["spice"] else []
+        name = " ".join(parts + ["romantasy"]).capitalize()
+        return "%s: %s" % (name, self.f["trope"].lower()) if self.f["trope"] else name + " books"
+
+    def _sync_address(self):
+        f = self.f
+        if f["trope"] or f["spice"]:
+            router.replace("books", f["trope"] or "all", f["spice"])
+            window.document.title = self._list_name() + " · PerfectCast"
+        else:
+            router.replace("books")
+            window.document.title = "New romantasy releases · PerfectCast"
+        self.share_list_button.visible = bool(f["trope"] or f["spice"])
 
     def _draw(self):
         d, n, me = self.d, self.dom_nodes, state.me()
@@ -86,11 +116,13 @@ class Books(BooksTemplate):
             [{"label": t, "value": t, "on": t == self.f["trope"]} for t in self.d.get("tropes") or []]
         for key, el in (("new", self.sort_new), ("soon", self.sort_soon), ("cast", self.sort_cast)):
             el.classes["on"] = self.f["sort"] == key
+        self.share_list_button.visible = bool(self.f["trope"] or self.f["spice"])
 
     def _trope(self, **event_args):
         key = state.focus_key()
         self.f["trope"] = event_args.get("value") or ""
         self._draw_shelf()
+        self._sync_address()
         state.refocus(self.trope_panel, key)
 
     @handle("search_box", "change")
@@ -102,6 +134,7 @@ class Books(BooksTemplate):
     def spice_box_change(self, **event_args):
         self.f["spice"] = self.spice_box.selected_value or ""
         self._draw_shelf()
+        self._sync_address()
 
     def sort_click(self, event):
         self.f["sort"] = event.currentTarget.getAttribute("data-sort")
@@ -110,6 +143,10 @@ class Books(BooksTemplate):
     @handle("feature_share", "click")
     def feature_share_click(self, **event_args):
         pc.share(router.href("book", self.top["key"]), "A new romantasy to fan-cast")
+
+    @handle("share_list_button", "click")
+    def share_list_button_click(self, **event_args):
+        pc.share(router.href("books", self.f["trope"] or "all", self.f["spice"]), self._list_name())
 
     def _suggest(self):
         if pc.need_sign_in("Sign up to suggest books for the shelf."):

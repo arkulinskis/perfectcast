@@ -204,6 +204,8 @@ def load():
             app_tables.comments.add_row(casting=c, user=rnd.choice(others), body=rnd.choice(COMMENTS),
                                         created=c["created"] + dt.timedelta(hours=rnd.randint(1, 40)), hidden=False, is_demo=True)
 
+    _extras(rnd, fans, all_castings, now)
+
     # Something for the admin to review: a suggested book, a suggested character and a report.
     pending = app_tables.books.add_row(key=C.token(10), title="Court of Sapphire Smoke", author="Lyra Fenwick", series="",
                                        series_no=None, release=today + dt.timedelta(days=40), spice=3,
@@ -227,11 +229,50 @@ def load():
     return counts()
 
 
+# Studio castings for two demo characters (made-up stars too): one the fans agree with, one they don't.
+OFFICIAL = {"Prince Caelan": "Dmitri Ashcombe", "Lady Wren Albrecht": "Hana Mizuki"}
+SPOILER = "I won't say who, but that chapter 31 reveal changes how I see this whole cast. Read to the end!"
+
+
+def _extras(rnd, fans, castings, now):
+    """2026-11-20 features: a spoiler comment, studio castings, swoon-off votes. Each is guarded: the new columns
+    and the duels table exist only once the user accepts the schema."""
+    for name, star in OFFICIAL.items():
+        ch = app_tables.characters.get(name=name, is_demo=True)
+        if ch is not None:
+            C.put(ch, official_star=star, official_source="")
+    if castings:
+        c = castings[0]
+        x = app_tables.comments.add_row(casting=c, user=next(f for f in fans if f != c["user"]), body=SPOILER,
+                                        created=c["created"] + dt.timedelta(hours=3), hidden=False, is_demo=True)
+        C.put(x, spoiler=True)
+    duels = C.opt_table("duels")
+    if duels is None:
+        return
+    by_char = {}
+    for c in castings:
+        by_char.setdefault(c["character"].get_id(), []).append(c)
+    for group in by_char.values():
+        for i, a in enumerate(group):
+            for b in group[i + 1:]:
+                for f in rnd.sample(fans, rnd.randint(0, 3)):
+                    if f in (a["user"], b["user"]):
+                        continue
+                    favour_a = rnd.random() < 0.5 + 0.06 * (int(a["hearts"] or 0) - int(b["hearts"] or 0))
+                    w, lost = (a, b) if favour_a else (b, a)
+                    duels.add_row(user=f, character=a["character"], winner=w, loser=lost,
+                                  created=now - dt.timedelta(hours=rnd.randint(1, 200)), is_demo=True)
+
+
 def remove(remember=True):
     from . import Casting  # imported here: Casting -> Shelf -> DemoData would be circular at load time
     for ch in app_tables.characters.search(is_demo=True):
         for c in app_tables.castings.search(character=ch):
             Casting.delete_casting_row(c)  # members' collages of demo characters go with them
+    duels = C.opt_table("duels")
+    if duels is not None:
+        for r in duels.search(is_demo=True):
+            r.delete()
     for name in DEMO_TABLES:
         for r in getattr(app_tables, name).search(is_demo=True):
             r.delete()

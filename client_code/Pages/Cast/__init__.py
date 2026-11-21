@@ -121,10 +121,11 @@ class Cast(CastTemplate):
             return
         self.post_button.enabled = False
         try:
-            r = state.call("add_comment", self.key, body)
+            r = state.call("add_comment", self.key, body, bool(self.spoiler_box.checked))
         finally:
             self.post_button.enabled = True
         if r:
             self.d["comments"].append(r["comment"])
             self.comment_box.text = ""
+            self.spoiler_box.checked = False
             self._draw_comments()

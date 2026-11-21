@@ -15,6 +15,12 @@ class CharRow(CharRowTemplate):
         self.role_box.selected_value = c.get("role") if c.get("role") in pc.ROLES else "side"
         self.blurb_box.text = c.get("blurb") or ""
         pc.show(self.dom_nodes["pending"], c.get("status") == "pending")
+        pc.show(self.dom_nodes["studio"], bool(c.get("_admin")))
+        self.studio_box.text = c.get("official_star") or ""
+        self.source_box.text = c.get("official_source") or ""
+        state.set_control_attr(self.studio_box, "maxlength", 80)
+        state.set_control_attr(self.source_box, "maxlength", 300)
+        state.set_control_attr(self.source_box, "type", "url")
         state.set_control_attr(self.name_box, "maxlength", 60)
         state.set_control_attr(self.name_box, "aria-label", "Character name")
         state.set_control_attr(self.role_box, "aria-label", "Role")
@@ -32,6 +38,14 @@ class CharRow(CharRowTemplate):
     @handle("blurb_box", "change")
     def blurb_box_change(self, **event_args):
         self.item["blurb"] = self.blurb_box.text or ""
+
+    @handle("studio_box", "change")
+    def studio_box_change(self, **event_args):
+        self.item["official_star"] = self.studio_box.text or ""
+
+    @handle("source_box", "change")
+    def source_box_change(self, **event_args):
+        self.item["official_source"] = self.source_box.text or ""
 
     @handle("remove_button", "click")
     def remove_button_click(self, **event_args):

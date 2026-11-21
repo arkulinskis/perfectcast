@@ -19,8 +19,17 @@ class Comment(CommentTemplate):
             n["who"].removeAttribute("href")
         n["ago"].textContent = state.ago(x.get("created"))
         n["body"].textContent = x.get("body") or ""
+        spoiler = bool(x.get("spoiler"))
+        pc.show(n["spoil_tag"], spoiler)
+        pc.show(n["reveal"], spoiler and not x.get("mine"))  # your own spoiler shows (with its tag)
+        pc.show(n["body"], not spoiler or bool(x.get("mine")))
         self.delete_button.visible = bool(x.get("can_delete"))
         self.report_button.visible = not x.get("mine") and bool(state.me())
+
+    def reveal_click(self, event):
+        n = self.dom_nodes
+        pc.show(n["reveal"], False)
+        pc.show(n["body"], True)
 
     @handle("delete_button", "click")
     def delete_button_click(self, **event_args):

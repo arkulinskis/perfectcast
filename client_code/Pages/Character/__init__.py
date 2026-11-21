@@ -53,6 +53,9 @@ class Character(CharacterTemplate):
         pc.show(n["no_pick"], not top)
         self.bars_panel.items = cons
         pc.show(n["no_votes"], not cons)
+        self._draw_studio(d.get("official"), top[0] if top else None)
+        pc.show(n["duel_link"], bool(d.get("duel_ready")))
+        pc.link(n["duel_link"], router.href("duel", c["key"]))
         n["total"].textContent = state.plural(d.get("total") or 0, "collage")
         self.sort_loved.classes["on"] = self.sort == "loved"
         self.sort_new.classes["on"] = self.sort == "new"
@@ -64,6 +67,28 @@ class Character(CharacterTemplate):
         self.casts_panel.items = casts
         self.no_casts.visible = not casts
         n["empty_line"].textContent = "Who do you see when you read %s?" % c["name"]
+
+    def _draw_studio(self, off, top):
+        """The studio's casting (when a film or series has been announced) next to the fans' pick."""
+        n = self.dom_nodes
+        pc.show(n["studio"], bool(off))
+        if not off:
+            return
+        n["studio_name"].textContent = off["name"]
+        pc.show(n["studio_src"], bool(off.get("source")))
+        if off.get("source"):
+            pc.link(n["studio_src"], off["source"])
+        n["fans_name"].textContent = top["name"] if top else "nobody yet"
+        if not top:
+            text, kind = "Waiting for the fans", "brand"
+        elif off.get("agree"):
+            text, kind = "The fans agree", "good"
+        elif off.get("rank"):
+            text, kind = "Fans rank them #%d · %d%%" % (off["rank"], off.get("pct") or 0), "warn"
+        else:
+            text, kind = "No fan has cast them", "bad"
+        n["verdict"].textContent = text
+        n["verdict"].className = "ui-badge " + kind
 
     def sort_click(self, event):
         self.sort = event.currentTarget.getAttribute("data-sort")

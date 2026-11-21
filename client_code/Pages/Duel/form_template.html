@@ -1,0 +1,60 @@
+<anvil-form layout="PerfectCast.Layouts.Shell">
+  <anvil-block slot="content">
+    <div class="pc-page">
+      <div class="ui-wrap">
+        <div class="du-head">
+          <div>
+            <h1><i class="ic ic-crown" aria-hidden="true"></i> Swoon-off</h1>
+            <p class="muted">Two collages, one character. Tap the one that wins your heart.</p>
+          </div>
+          <p class="du-count small" anvil:dom-node="count" role="status"></p>
+        </div>
+        <div class="du-for" anvil:dom-node="for_line" hidden>
+          <p><span>Who cast</span> <a anvil:dom-node="char_link" href="#books"></a> <span>better?</span>
+            <span class="muted small">From <a anvil:dom-node="book_link" href="#books"><i anvil:dom-node="book_title"></i></a></span></p>
+          <a class="pc-chip" anvil:dom-node="pin_link" href="#duel"></a>
+        </div>
+        <p class="du-status muted" anvil:dom-node="status" role="status">Finding two collages...</p>
+        <div class="du-arena" anvil:dom-node="arena" hidden>
+          <div class="du-side" anvil:dom-node="side_a">
+            <div class="du-art" anvil:dom-node="art_a" data-side="0" anvil:on-dom:click="self.art_click">
+              <anvil-component type="PerfectCast.Components.Collage" name="coll_a"></anvil-component>
+              <span class="du-crown" aria-hidden="true"><i class="ic ic-crown"></i></span>
+            </div>
+            <div class="du-meta">
+              <p class="du-by">Cast by <a anvil:dom-node="by_a" href="#books"></a></p>
+              <p class="du-cap" anvil:dom-node="cap_a"></p>
+              <div class="du-res" anvil:dom-node="res_a" hidden><div class="du-bar"><span anvil:dom-node="bar_a"></span></div><p class="small" anvil:dom-node="line_a"></p></div>
+              <anvil-component type="Button" name="pick_a" prop:text="This one" prop:role='["btn", "btn-primary", "btn-block", "ic-heart"]'></anvil-component>
+            </div>
+          </div>
+          <div class="du-vs" aria-hidden="true">vs</div>
+          <div class="du-side" anvil:dom-node="side_b">
+            <div class="du-art" anvil:dom-node="art_b" data-side="1" anvil:on-dom:click="self.art_click">
+              <anvil-component type="PerfectCast.Components.Collage" name="coll_b"></anvil-component>
+              <span class="du-crown" aria-hidden="true"><i class="ic ic-crown"></i></span>
+            </div>
+            <div class="du-meta">
+              <p class="du-by">Cast by <a anvil:dom-node="by_b" href="#books"></a></p>
+              <p class="du-cap" anvil:dom-node="cap_b"></p>
+              <div class="du-res" anvil:dom-node="res_b" hidden><div class="du-bar"><span anvil:dom-node="bar_b"></span></div><p class="small" anvil:dom-node="line_b"></p></div>
+              <anvil-component type="Button" name="pick_b" prop:text="This one" prop:role='["btn", "btn-primary", "btn-block", "ic-heart"]'></anvil-component>
+            </div>
+          </div>
+        </div>
+        <div class="du-after" anvil:dom-node="after" hidden>
+          <anvil-component type="Button" name="next_button" prop:text="Next pair" prop:role='["btn", "btn-primary", "btn-lg", "ic-arrow"]'></anvil-component>
+          <a class="ui-btn" anvil:dom-node="winner_link" href="#books"><i class="ic ic-eye"></i>See the winner</a>
+          <p class="du-nudge small" anvil:dom-node="nudge" hidden><a href="#auth/signup">Sign up</a> to make your picks count in the scores.</p>
+        </div>
+        <div class="ui-empty" anvil:dom-node="empty" hidden>
+          <i class="ic ic-sparkle"></i><h2 anvil:dom-node="empty_title"></h2><p anvil:dom-node="empty_text"></p>
+          <div class="ui-row">
+            <anvil-component type="Button" name="retry_button" prop:text="Try again" prop:role='["btn", "ic-refresh"]'></anvil-component>
+            <a class="ui-btn primary" anvil:dom-node="empty_link" href="#books"><i class="ic ic-book"></i>Browse the books</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </anvil-block>
+</anvil-form>
